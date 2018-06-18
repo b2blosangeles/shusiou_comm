@@ -9,8 +9,8 @@
 		var _dns = {"comm":["/"]};
 		let socket = io.connect(_dns.comm[0]);
 		socket.on('connect', function() {
-			console.log('--->connected ===>' + socket.id + '---' + socket.url);
-			console.log(socket.request.url);
+			console.log('--->connected ===>' + socket.id + '---' + socket);
+			console.log(socket);
 			socket.emit('createRoom', 'CRON_REPORT_A');
 			socket.on('serverData', function(incomeData) {
 				// console.log('====>>' + obj.socket.id);
