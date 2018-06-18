@@ -10,17 +10,13 @@
 		let socket = io.connect(_dns.comm[0]);
 		socket.on('connect', function() {
 			console.log('--->connected -->' + socket.id);
-			/*
-			obj.socket.emit('createRoom', cfg.room);
-			if (typeof cfg.onServerData === 'function') {
-				obj.socket.on('serverData', function(incomeData) {
-					// console.log('====>>' + obj.socket.id);
-					if (incomeData._room === cfg.room) {
-						cfg.onServerData(incomeData, obj.socket);
-					}
-				});
-			}
-			*/
+			socket.emit('createRoom', 'CRON_REPORT');
+			socket.on('serverData', function(incomeData) {
+				// console.log('====>>' + obj.socket.id);
+				if (incomeData._room === 'CRON_REPORT') {
+					console.log(incomeData);
+				}
+			});
 		});		
 	</script>
 </head>
