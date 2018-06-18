@@ -16,7 +16,7 @@
 
 			me.socket.on('connect', function(){
 				me.socket.emit('createRoom', room);
-				me.socket.emit('clientData', {_room: room, _originLink: (!originLink) ? false : originLink, _requestID:me.requestID, data: data});
+				me.socket.emit('clientData', {_room: room, _originLink: (!originLink) ? false : url, _requestID:me.requestID, data: data});
 			});
 			setTimeout(function() {   
 				me.socket.close();
