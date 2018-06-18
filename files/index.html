@@ -9,19 +9,20 @@
 		var _dns = {"comm":["/"]};
 		let socket = io.connect(_dns.comm[0]);
 		socket.on('connect', function() {
-			console.log('--->connected ===>' + socket.id + '---' + socket);
-			console.log(socket.io.engine);
+			//console.log('--->connected ===>' + socket.id + '---' + socket);
+			//console.log(socket.io.engine);
 			socket.emit('createRoom', 'CRON_REPORT_A');
 			socket.on('serverData', function(incomeData) {
-				// console.log('====>>' + obj.socket.id);
 				if (incomeData._room === 'CRON_REPORT_A') {
-					console.log(incomeData);
+					document.getElementById('income_info').innerHTML += 
+						JSON.stringify(incomeData.data) + '<br/>';
 				}
 			});
 		});		
 	</script>
 </head>
 <body>
-	速修语言加密通信	
+	速修语言加密通信
+	<div id="income_info"></div>
 </body>
 </html>
