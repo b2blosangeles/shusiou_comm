@@ -41,7 +41,7 @@ whoami.getIP(
 	      headers: {
 		"content-type": "application/json"
 	      },
-	      form:{ip : ip, space : space, server_type : 'master'}
+	      form:{ip : ip, space : space, server_type : 'comm'}
 	    }, function (error, resp, body) { 
 		    console.log('Procecssed master ip ' + ip);
 	    });
@@ -56,7 +56,7 @@ var diskspace = require(env.root_path + '/package/diskspace/node_modules/diskspa
 delete require.cache[__dirname + '/watch_cron.inc.js'];
 let watch_cron_inc = require(__dirname + '/watch_cron.inc.js'),
     watchCron = new watch_cron_inc(__filename);
-watchCron.load('master', 60);
+watchCron.load('comm', 60);
 
 
 /* --- code for monitor root ---*/
