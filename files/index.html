@@ -6,7 +6,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
 	<!--script src="//cdnjs.cloudflare.com/ajax/l/ibs/annyang/2.6.0/annyang.min.js"></script-->	
 	<script>
-		var _dns = {"comm":["//master1.service.dev.shusiou.win"]};
+		var _dns = {"comm":["/"]};
 		let socket = io.connect(_dns.comm[0]);
 		socket.on('connect', function() {
 			console.log('--->connected -->' + socket.id);
