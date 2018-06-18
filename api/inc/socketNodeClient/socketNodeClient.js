@@ -7,7 +7,7 @@
 			let me = this;
 			me.socket = me.io.connect(url, {secure: true, reconnect: true, rejectUnauthorized : false});
 		}
-		me.sendToRoom = function (room, data, callback, innerData) {
+		me.sendToRoom = function (room, data, callback, originUrl) {
 			let me = this;
 			if (!me.socket || !me.socket.connected) {
 				me.connect();
@@ -16,11 +16,11 @@
 
 			me.socket.on('connect', function(){
 				me.socket.emit('createRoom', room);
-				me.socket.emit('clientData', {_room: room, _innerData: (!innerData) ? false : innerData, _requestID:me.requestID, data: data});
+				me.socket.emit('clientData', {_room: room, _originUrl: (!originUrl) ? false : originUrl, _requestID:me.requestID, data: data});
 			});
 			setTimeout(function() {   
 				me.socket.close();
-			},1000);			
+			},3000);			
 			me.socket.on('serverData', function(data) {
 				if ((data._room) && data._requestID === me.requestID) {
 					// me.socket.disconnect();
