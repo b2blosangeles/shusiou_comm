@@ -14,8 +14,8 @@
 			console.log(io.sockets.adapter.rooms);
 			socket.emit('createRoom', 'CRON_REPORT_A');
 			socket.on('serverData', function(incomeData) {
-				var clients = socket.clients('CRON_REPORT_A');
-				console.log(clients);
+				//var clients = socket.clients('CRON_REPORT_A');
+				//console.log(clients);
 				if (incomeData._room === 'CRON_REPORT_A') {
 					document.getElementById('income_info').innerHTML += 
 						JSON.stringify(incomeData.data) + '<br/>';
