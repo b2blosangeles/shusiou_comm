@@ -11,6 +11,7 @@
 		socket.on('connect', function() {
 			//console.log('--->connected ===>' + socket.id + '---' + socket);
 			//console.log(socket.io.engine);
+			console.log(io.sockets.adapter.rooms['CRON_REPORT_A'].length);
 			socket.emit('createRoom', 'CRON_REPORT_A');
 			socket.on('serverData', function(incomeData) {
 				var clients = socket.clients('CRON_REPORT_A');
