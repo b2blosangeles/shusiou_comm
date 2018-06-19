@@ -21,6 +21,9 @@
 						JSON.stringify(incomeData.data) + '<br/>';
 				}
 			});
+			socket.on('serverMessage', function(incomeData) {
+				console.log(incomeData);
+			});			
 		});		
 	</script>
 </head>
