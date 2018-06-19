@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>速修语言加密通信</title>
+    <title>速修语言加密通信{$room}</title>
 	<meta charset="utf-8" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
 	<!--script src="//cdnjs.cloudflare.com/ajax/l/ibs/annyang/2.6.0/annyang.min.js"></script-->	
 	<script>
-		let _dns = {"comm":["/"]}, roomName = 'CRON_REPORT_A', comm_area = {};
-		alert('{$room}')
+		let _dns = {"comm":["/"]}, roomName = '{$room}', comm_area = {};
 		let socket = io.connect(_dns.comm[0]);
 		socket.on('connect', function() {
 			socket.emit('createRoom', roomName);
