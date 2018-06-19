@@ -12,6 +12,11 @@
 		socket.on('connect', function() {
 			socket.emit('createRoom', roomName);
 			
+			io.in(roomName).clients((err, clients) => {
+				console.log(clients);
+			});
+
+			
 			socket.on('serverData', function(incomeData) {
 				if (incomeData._room === roomName) {
 					document.getElementById('income_info').innerHTML += 
