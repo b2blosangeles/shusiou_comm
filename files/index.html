@@ -12,10 +12,7 @@
 		socket.on('connect', function() {
 			socket.emit('createRoom', roomName);
 			
-			socket.in(roomName).clients((err, clients) => {
-				console.log(clients);
-			});
-
+			me.socket.emit('clientData', {_room: roomName,  data: {bb:'nice job'}});
 			
 			socket.on('serverData', function(incomeData) {
 				if (incomeData._room === roomName) {
