@@ -7,7 +7,7 @@
 	<!--script src="//cdnjs.cloudflare.com/ajax/l/ibs/annyang/2.6.0/annyang.min.js"></script-->	
 	<script>
 		let _dns = {"comm":["/"]}, roomName = 'CRON_REPORT_A', comm_area = {};
-		
+		alert('$room')
 		let socket = io.connect(_dns.comm[0]);
 		socket.on('connect', function() {
 			socket.emit('createRoom', roomName);
