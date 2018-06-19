@@ -12,7 +12,7 @@
 		socket.on('connect', function() {
 			socket.emit('createRoom', roomName);
 			
-			io.in(roomName).clients((err, clients) => {
+			socket.in(roomName).clients((err, clients) => {
 				console.log(clients);
 			});
 
