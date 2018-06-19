@@ -6,15 +6,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
 	<!--script src="//cdnjs.cloudflare.com/ajax/l/ibs/annyang/2.6.0/annyang.min.js"></script-->	
 	<script>
-		var _dns = {"comm":["/"]};
+		let _dns = {"comm":["/"]}, roomName = 'CRON_REPORT_A', comm_area = {};
+		
 		let socket = io.connect(_dns.comm[0]);
 		socket.on('connect', function() {
-			//console.log('--->connected ===>' + socket.id + '---' + socket);
-			socket.emit('createRoom', 'CRON_REPORT_A');
+			socket.emit('createRoom', roomName);
+			
 			socket.on('serverData', function(incomeData) {
-				//var clients = socket.clients('CRON_REPORT_A');
-				//console.log(clients);
-				if (incomeData._room === 'CRON_REPORT_A') {
+				if (incomeData._room === roomName) {
 					document.getElementById('income_info').innerHTML += 
 						JSON.stringify(incomeData.data) + '<br/>';
 				}
