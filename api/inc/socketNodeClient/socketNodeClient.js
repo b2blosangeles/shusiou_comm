@@ -6,7 +6,6 @@
 		me.connect = function () {
 			let me = this;
 			me.socket = me.io.connect(url, {secure: true, reconnect: true, rejectUnauthorized : false});
-			console.log(url);
 		}
 		me.sendToRoom = function (room, data, callback) {
 			let me = this;
