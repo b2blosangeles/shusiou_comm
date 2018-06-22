@@ -26,7 +26,7 @@
 		let socket = io.connect(_dns.comm[0]);
 		socket.on('connect', function() {
 			socket.emit('createRoom', roomName);
-			alert(socket.handshake.url);
+		
 			socket.emit('clientData', {_room: roomName, _from: socket.handshake.url,  data: {bb:'nice job'}});
 			
 			socket.on('serverData', function(incomeData) {
