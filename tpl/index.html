@@ -22,9 +22,9 @@
 	}
 	</script>	
 	<script>
-		let _dns = {"comm":["https://comm1.service.dev.shusiou.win"]}, roomName = '{$room}', comm_area = {};
+		let _dns = {"comm":["https://comm1.service.dev.shusiou.win/"]}, roomName = '{$room}', comm_area = {};
 		
-		let _proxy = ['http://comm1.service.dev.shusiou.win'];
+		let _proxy = ['http://comm1.service.dev.shusiou.win/', 'https://comm1.service.dev.shusiou.win/'];
 		
 		let socket = io.connect(_dns.comm[0]);
 		
