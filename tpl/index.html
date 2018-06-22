@@ -27,6 +27,8 @@
 		socket.on('connect', function() {
 			socket.emit('createRoom', roomName);
 			
+			socket.to(roomName).emit('clientData', {_room: roomName,  data: {bb:'nice job'}});
+			
 			socket.emit('clientData', {_room: roomName,  data: {bb:'nice job'}});
 			
 			socket.on('serverData', function(incomeData) {
