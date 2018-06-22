@@ -6,7 +6,7 @@
 		me.connect = function () {
 			let me = this;
 			
-			let patt_https = /^https\:\/\//,  patt_http = /^http\:\/\//;
+			let patt_https = /^https\:\/\//i,  patt_http = /^http\:\/\//i;
 			
 			if (patt_https.test(cfg.link)) {
 				me.socket = me.io.connect(cfg.link, {secure: true, reconnect: true, rejectUnauthorized : false});
@@ -25,16 +25,17 @@
 			me.socket.on('connect', function(){
 				me.socket.emit('createRoom', room);
 				data.pp = 'PP';
-				me.socket.emit('clientData', {_room: room, _requestID:me.requestID, data: data});
+				me.socket.emit('clientData', {_room: room, 
+						_link: cfg.link, _proxy: ((cfg.proxy) ? cfg.proxy : null),
+						_requestID:me.requestID, data: data});
 			});
 			setTimeout(function() {   
 				me.socket.close();
 			},1000);			
 			me.socket.on('serverData', function(data) {
 				if ((data._room) && data._requestID === me.requestID) {
-					// me.socket.disconnect();
-					callback(data);
 					me.socket.close();
+					callback(data);
 					return true;
 				}
 			});		
