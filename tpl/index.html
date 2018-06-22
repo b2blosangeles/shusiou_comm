@@ -23,13 +23,15 @@
 	</script>	
 	<script>
 		let _dns = {"comm":["https://comm1.service.dev.shusiou.win"]}, roomName = '{$room}', comm_area = {};
+		
+		let _proxy = ['http://comm1.service.dev.shusiou.win'];
+		
 		let socket = io.connect(_dns.comm[0]);
-		let proxy = ['http://comm1.service.dev.shusiou.win'];
 		
 		socket.on('connect', function() {
 			socket.emit('createRoom', roomName);
 		
-			socket.emit('clientData', {_room: roomName, _proxy: proxy,  data: {bb:'nice job'}});
+			socket.emit('clientData', {_room: roomName, _link: _dns.comm[0], _proxy: _proxy,  data: {bb:'nice job'}});
 			
 			socket.on('serverData', function(incomeData) {
 				if (incomeData._room === roomName) {
