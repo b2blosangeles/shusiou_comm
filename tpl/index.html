@@ -29,8 +29,6 @@
 			
 			socket.emit('clientData', {_room: roomName,  data: {bb:'nice job'}});
 			
-			socket.emit('clientData', {_room: roomName,  data: {bb:'nice job'}});
-			
 			socket.on('serverData', function(incomeData) {
 				if (incomeData._room === roomName) {
 					document.getElementById('income_info').innerHTML += 
