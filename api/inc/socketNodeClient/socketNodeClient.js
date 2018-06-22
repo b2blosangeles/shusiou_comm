@@ -5,8 +5,8 @@
 
 		me.connect = function () {
 			let me = this;
-			// me.socket = me.io.connect(url, {secure: true, reconnect: true, rejectUnauthorized : false});
-			me.socket = me.io.connect(url, {secure: false, reconnect: true, rejectUnauthorized : false});
+			me.socket = me.io.connect(url, {secure: true, reconnect: true, rejectUnauthorized : false});
+			// me.socket = me.io.connect(url, {secure: false, reconnect: true, rejectUnauthorized : false});
 		}
 		me.sendToRoom = function (room, data, callback) {
 			let me = this;
