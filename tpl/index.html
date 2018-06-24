@@ -29,9 +29,10 @@
 		let socket = io.connect(_dns.comm[0]);
 		
 		socket.on('connect', function() {
-			socket.emit('createRoom', roomName);
+			// socket.emit('createRoom', roomName);
 		
-			socket.emit('clientData', {_room: roomName, _link: _dns.comm[0], _proxy: _proxy,  data: {bb:'nice job'}});
+			// socket.emit('clientData', {_room: roomName, _link: _dns.comm[0], _proxy: _proxy,  data: {bb:'nice job'}});
+			socket.emit('clientData', {_socket: roomName, _link: _dns.comm[0], _proxy: _proxy,  data: {bb:'nice job'}});
 			
 			socket.on('serverData', function(incomeData) {
 				if (incomeData._room === roomName) {
