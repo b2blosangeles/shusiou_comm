@@ -33,7 +33,7 @@
 		
 			// socket.emit('clientData', {_room: roomName, _link: _dns.comm[0], _proxy: _proxy,  data: {bb:'nice job'}});
 			socket.emit('clientData', {_socket: _socket, _link: _dns.comm[0], _proxy: _proxy,  
-				data: {message: 'I got a ball'}});
+				data: {ask:'howAreYouCore', sender: socket.id}});
 			
 			socket.on('serverData', function(incomeData) {
 				if (incomeData._room === roomName) {
