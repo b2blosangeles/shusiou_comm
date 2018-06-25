@@ -22,19 +22,6 @@
 	}
 	</script>	
 	<script>
-		let QNA = function(socket) {
-			this.requestId = (!this.requestId) ? 1 : (this.requestId + 1)
-			socket.emit('clientData', {_socket: _socket, _link: _dns.comm[0], _proxy: _proxy,  
-				data: {qna:'qnaRequest', sender: socket.id}});
-			/*
-			let _itv = setInterval(
-				function() {
-					console.log(new Date());
-				}, 1000
-			)
-			*/
-		};
-		
 		
 		let _dns = {"comm":["https://comm1.service.dev.shusiou.win/"]}, roomName = '{$room}', comm_area = {};
 		let _socket = '{$socket}'
@@ -44,11 +31,6 @@
 		
 		socket.on('connect', function() {
 			// socket.emit('createRoom', roomName);
-		
-			// socket.emit('clientData', {_room: roomName, _link: _dns.comm[0], _proxy: _proxy,  data: {bb:'nice job'}});
-			socket.emit('clientData', {_socket: _socket, _link: _dns.comm[0], _proxy: _proxy,  
-				data: {qna:'howAreYouCore', sender: socket.id}});
-			
 			socket.on('serverData', function(incomeData) {
 				if (incomeData._room === roomName) {
 					document.getElementById('income_info').innerHTML += 
@@ -59,7 +41,8 @@
 				console.log(incomeData);
 			});	
 			
-			let qna = new QNA(socket);
+			socket.emit('clientData', {_socket: _socket, _link: _dns.comm[0], _proxy: _proxy,  
+				data: {qna:'qnaRequest', sender: socket.id}});
 			
 		});		
 	</script>
