@@ -32,10 +32,10 @@
 		socket.on('connect', function() {
 			// socket.emit('createRoom', roomName);
 			socket.on('serverData', function(incomeData) {
-				if (incomeData._room === roomName) {
+			//	if (incomeData._room === roomName) {
 					document.getElementById('income_info').innerHTML += 
 						JSON.stringify(incomeData.data) + '<br/>';
-				}
+			//	}
 			});
 			socket.on('serverMessage', function(incomeData) {
 				console.log(incomeData);
