@@ -41,7 +41,11 @@
 						window.close();
 					}
 				});
-				setInterval(me.ping, 1000);
+				setInterval(function() {
+					me.socket.emit('clientData', {_socket: _socket, _link: _dns.comm[0], _proxy: _proxy, 
+					data: {_sender: me.socket.id, _code : 'qnaRequest', niu:2}});
+
+				}, 1000);
 			});			
 		};
 		qna.ping = function() {
