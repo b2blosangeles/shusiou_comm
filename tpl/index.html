@@ -51,6 +51,7 @@
 			let me = this;
 			document.getElementById('income_info').innerHTML = 
 						JSON.stringify(me.ping_id);
+			window.focus();
 			for (var k in me.ping_id) {
 				if ((new Date().getTime() - k) > 3000) {
 					me.closeme();
