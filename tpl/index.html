@@ -33,13 +33,8 @@
 			me.socket = io.connect(_dns.comm[0]);
 			me.socket.on('connect', function() {
 				me.socket.on('serverData', function(incomeData) {
-					
-						// JSON.stringify(incomeData.data) + '==' + new Date() + '<br/>';
-					
 					if (incomeData.data.connection.indexOf(me.socket.id) !== -1) {
 						delete me.ping_id[incomeData.data.ping_id];
-						// me.closeme();
-						// window.close();
 					}
 				});
 				setInterval(function() {
@@ -50,7 +45,7 @@
 					
 					me.audit();
 
-				}, 1000);
+				}, 500);
 			});			
 		};
 		qna.audit = function() {
