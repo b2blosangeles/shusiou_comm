@@ -34,8 +34,8 @@
 			me.socket.on('connect', function() {
 				me.socket.on('serverData', function(incomeData) {
 					document.getElementById('income_info').innerHTML = 
-						// JSON.stringify(me.ping_id);
-						JSON.stringify(incomeData.data) + '==' + new Date() + '<br/>';
+						JSON.stringify(me.ping_id);
+						// JSON.stringify(incomeData.data) + '==' + new Date() + '<br/>';
 					/*
 					if (incomeData.data.connection.indexOf(me.socket.id) !== -1) {
 						delete me.ping_id[incomeData.data.ping_id];
