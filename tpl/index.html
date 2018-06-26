@@ -33,7 +33,7 @@
 			me.socket = io.connect(_dns.comm[0]);
 			me.socket.on('connect', function() {
 				me.socket.on('serverData', function(incomeData) {
-					document.getElementById('income_info').innerHTML = me.ping_id.join(',');
+					document.getElementById('income_info').innerHTML = JSON.stringify(me.ping_id);
 					//	JSON.stringify(incomeData.data) + '==' + new Date() + '<br/>';
 					
 					if (incomeData.data.connection.indexOf(me.socket.id) !== -1) {
