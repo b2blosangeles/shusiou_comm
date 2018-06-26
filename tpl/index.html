@@ -27,23 +27,27 @@
 		let _socket = '{$socket}'
 		let _proxy = ['http://comm1.service.dev.shusiou.win/', 'https://comm1.service.dev.shusiou.win/'];
 		
-		let qna = {};
+		let qna = {ping_id:{}};
 		qna.init = function() {
 			let me = this;
 			me.socket = io.connect(_dns.comm[0]);
 			me.socket.on('connect', function() {
 				me.socket.on('serverData', function(incomeData) {
-					document.getElementById('income_info').innerHTML = 
-						JSON.stringify(incomeData.data) + '==' + new Date() + '<br/>';
+					document.getElementById('income_info').innerHTML = me.ping_id.join(',');
+					//	JSON.stringify(incomeData.data) + '==' + new Date() + '<br/>';
 					
-					if (incomeData.data.connection.indexOf(me.socket.id) === -1) {
-						me.closeme();
-						window.close();
+					if (incomeData.data.connection.indexOf(me.socket.id) !== -1) {
+						delete me.ping_id[incomeData.data.ping_id];
+						// me.closeme();
+						// window.close();
 					}
 				});
+				var 
 				setInterval(function() {
+					let ping_id = new Date().getTime();
+					me.ping_id[ping_id] = 1;
 					me.socket.emit('clientData', {_socket: _socket, _link: _dns.comm[0], _proxy: _proxy, 
-					data: {_sender: me.socket.id, _code : 'qnaRequest', niu:2}});
+					data: {_sender: me.socket.id, _code : 'qnaRequest', ping_id: ping_id}});
 
 				}, 3000);
 			});			
