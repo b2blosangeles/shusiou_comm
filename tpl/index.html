@@ -36,12 +36,12 @@
 					document.getElementById('income_info').innerHTML = 
 						// JSON.stringify(me.ping_id);
 						JSON.stringify(incomeData.data) + '==' + new Date() + '<br/>';
-					
+					/*
 					if (incomeData.data.connection.indexOf(me.socket.id) !== -1) {
 						delete me.ping_id[incomeData.data.ping_id];
 						// me.closeme();
 						// window.close();
-					}
+					}*/
 				});
 				setInterval(function() {
 					let ping_id = new Date().getTime();
