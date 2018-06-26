@@ -48,7 +48,7 @@
 					me.socket.emit('clientData', {_socket: _socket, _link: _dns.comm[0], _proxy: _proxy, 
 					data: {_sender: me.socket.id, _code : 'qnaRequest', ping_id: ping_id}});
 					
-					
+					me.audit();
 
 				}, 1000);
 			});			
