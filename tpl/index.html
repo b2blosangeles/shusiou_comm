@@ -31,7 +31,7 @@
 		qna.init = function() {
 			let me = this;
 			me.socket = io.connect(_dns.comm[0]);
-			socket.on('connect', function() {
+			me.socket.on('connect', function() {
 				// socket.emit('createRoom', roomName);
 				me.socket.on('serverData', function(incomeData) {
 					document.getElementById('income_info').innerHTML += 
