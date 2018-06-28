@@ -23,13 +23,12 @@
 	</script>
 	<script src="/js/qna.js"></script>
 	<script>	
-		
-		let _link = 'https://comm1.service.dev.shusiou.win/';
-		let _socket = '{$socket}'
-		let _proxy = ['http://comm1.service.dev.shusiou.win/', 'https://comm1.service.dev.shusiou.win/'];
-
 		let qna = new QNA();
-		qna.init(_socket, _link, _proxy);
+		qna.init({ 
+			master_socket: '{$socket}', 
+			link : 'https://comm1.service.dev.shusiou.win/', 
+			proxy: ['http://comm1.service.dev.shusiou.win/', 'https://comm1.service.dev.shusiou.win/']
+		});
 	</script>
 	
 </head>
