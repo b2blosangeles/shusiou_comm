@@ -14,7 +14,7 @@
 			me.ping_id = {};
 			me.cfg = cfg;
 			
-			me.socket = io.connect(_link);
+			me.socket = io.connect(me.cfg.link);
 			me.socket.on('connect', function() {
 				me.socket.on('serverData', function(incomeData) {
 					if (incomeData.data._code === 'clientRequest') {
