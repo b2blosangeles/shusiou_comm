@@ -1,5 +1,5 @@
 (function () { 
-	var obj =  function () {
+	var obj =  function (_proxy) {
 		this.server = function(incomeData) {
 			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
 				_proxy: _proxy, 
@@ -44,9 +44,8 @@
 		};
 	};
 	window.QNA = obj;
-})();
-let qna = new QNA()
-qna.init();
+})(_proxy);
+
 /*
 		let qna = {ping_id:{}};
 		
