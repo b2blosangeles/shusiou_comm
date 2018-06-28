@@ -27,8 +27,9 @@
 		let _dns = {"comm":["https://comm1.service.dev.shusiou.win/"]}, roomName = '{$room}', comm_area = {};
 		let _socket = '{$socket}'
 		let _proxy = ['http://comm1.service.dev.shusiou.win/', 'https://comm1.service.dev.shusiou.win/'];
-		let qna = new QNA(_proxy)
-		qna.init();
+
+		let qna = new QNA();
+		qna.init(_proxy);
 	</script>
 	
 </head>
