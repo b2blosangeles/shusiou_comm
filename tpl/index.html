@@ -24,12 +24,12 @@
 	<script src="/js/qna.js"></script>
 	<script>	
 		
-		let _dns = {"comm":["https://comm1.service.dev.shusiou.win/"]}, roomName = '{$room}', comm_area = {};
+		let _link = 'https://comm1.service.dev.shusiou.win/';
 		let _socket = '{$socket}'
 		let _proxy = ['http://comm1.service.dev.shusiou.win/', 'https://comm1.service.dev.shusiou.win/'];
 
 		let qna = new QNA();
-		qna.init(_proxy);
+		qna.init(_socket, _link, _proxy);
 	</script>
 	
 </head>
