@@ -1,17 +1,18 @@
 (function () { 
-	var obj =  function (_proxy) {
+	var obj =  function () {
 		this.server = function(incomeData) {
 			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
-				_proxy: _proxy, 
+				_proxy: me._proxy, 
 				data: {connection: [socket.id, incomeData.data._sender], _code : 'resQnaRequest',
 				      ping_id : incomeData.data.ping_id
 				      }});			
 		}
 		this.client = function(incomeData) {			
 		}		
-		this.init = function() {
+		this.init = function(_proxy) {
 			let me = this;
 			me.ping_id = {};
+			me._proxy = _proxy;
 			
 			me.socket = io.connect(_dns.comm[0]);
 			me.socket.on('connect', function() {
@@ -44,7 +45,7 @@
 		};
 	};
 	window.QNA = obj;
-})(_proxy);
+})();
 
 /*
 		let qna = {ping_id:{}};
