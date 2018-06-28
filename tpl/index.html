@@ -46,10 +46,8 @@
 					if (incomeData.data._code === 'clientRequest') {
 						me.server(incomeData);
 					} else {
-						// if (incomeData.data.connection.indexOf(me.socket.id) !== -1) {
-							delete me.ping_id[incomeData.data.ping_id];
-							me.client(incomeData);
-						// }
+						delete me.ping_id[incomeData.data.ping_id];
+						me.client(incomeData);
 					}
 				});
 				setInterval(function() {
