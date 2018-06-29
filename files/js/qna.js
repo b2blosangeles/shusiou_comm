@@ -53,7 +53,7 @@
 						me.sessionService(incomeData);
 					} else if (incomeData.data._code === '_ReSessionRequest' && (incomeData.data.ping_id)) {
 						delete me.ping_id[incomeData.data.ping_id];
-						me.incomeClient(incomeData);						
+						// me.incomeClient(incomeData);						
 					} else if (incomeData.data._code === '_sendToServer') {
 						me.incomeServer(incomeData);
 					} else {
