@@ -73,6 +73,7 @@
 		};
 		this.audit = function() {
 			let me = this;
+			console.log(me.ping_id);
 			for (var k in me.ping_id) {
 				if ((new Date().getTime() - k) > 3000) {
 					me.socket.close();
