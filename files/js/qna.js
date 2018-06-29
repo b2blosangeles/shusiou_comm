@@ -8,20 +8,12 @@
 				      ping_id : incomeData.data.ping_id, _code : '_ReSessionRequest',
 				      }});			
 		}		
-		this.incomeServer = function(incomeData) {			
-			console.log('---this.server---');
-			console.log(incomeData);
-			console.log('---this.server-ed--');
+		this.incomeServer = function(incomeData) {
 			let me = this;
 			if (typeof me.cfg.onServerData === 'function') {
 				me.cfg.onServerData(incomeData, me.socket);
 			}
-			return true;
-			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
-				_proxy: me.cfg.proxy, 
-				data: {connection: [socket.id, incomeData.data._sender], _code : 'resQnaRequest',
-				      ping_id : incomeData.data.ping_id
-				      }});			
+			return true;			
 		}
 		this.sendToServer = function(data) {
 			let me = this;
