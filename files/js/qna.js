@@ -4,7 +4,8 @@
 			let me = this;
 			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
 				_proxy: me.cfg.proxy, 
-				data: {connection: [me.socket.id, incomeData.data._sender],
+				data: {incomeData.data._sender],
+				// data: {connection: [me.socket.id, incomeData.data._sender],
 				      ping_id : incomeData.data.ping_id, _code : '_ReSessionRequest',
 				      }});			
 		}		
@@ -65,7 +66,6 @@
 						me.ping_id[ping_id] = 1;
 						me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
 						data: {_sender: me.socket.id, _code : '_sessionRequest', ping_id: ping_id}});
-						// document.getElementById('income_info').innerHTML =  JSON.stringify(me.ping_id);
 						me.audit();
 					}, 2000);
 				}
