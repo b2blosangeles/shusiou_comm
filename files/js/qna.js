@@ -2,7 +2,7 @@
 	var obj =  function () {
 		this.sessionService = function(incomeData) {
 			let me = this;
-			if (incomeData.data._sender) me.clients[incomeData.data._sender] = 1;
+			if (incomeData.data._sender) me.clients[incomeData.data._sender] = new Date().getTime();
 			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
 				_proxy: me.cfg.proxy, 
 				data: {
@@ -69,6 +69,10 @@
 						data: {_sender: me.socket.id, _code : '_sessionRequest', ping_id: ping_id}});
 						me.audit();
 					}, 2000);
+				} else {
+					setInterval(function() {
+						me.auditClients();
+					}, 500);				
 				}
 			});			
 		};
@@ -82,6 +86,14 @@
 				}
 			};
 		};
+		this.auditClients = function() {
+			let me = this;
+			for (var k in me.clients) {
+				if ((new Date().getTime() - me.clients[k]) > 3000) {
+					delete me.clients[me.socket.id];
+				}
+			};
+		};		
 	};
 	window.QNA = obj;
 })();
