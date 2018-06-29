@@ -44,6 +44,7 @@
 			me.ping_id = {};
 			me.clients = {};
 			me.cfg = cfg;
+			me.timeOut = (me.cfg.timeOut) ? me.cfg.timeOut : 3000;
 			
 			me.socket = io.connect(me.cfg.link);
 			me.socket.on('connect', function() {
@@ -68,7 +69,7 @@
 						me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
 						data: {_sender: me.socket.id, _code : '_sessionRequest', ping_id: ping_id}});
 						me.auditClient();
-					}, 2000);
+					}, me.timeOut - 1000);
 				} else {
 					setInterval(function() {
 						me.auditServerClients();
@@ -79,16 +80,18 @@
 		this.auditClient = function() {
 			let me = this;
 			for (var k in me.ping_id) {
-				if ((new Date().getTime() - k) > 3000) {
+				if ((new Date().getTime() - k) > me.timeOut) {
 					me.socket.close();
-					window.close();
+					if (typeof me.cfg.afterTimeout === 'function') {
+						me.cfg.afterTimeout(incomeData, me.socket);
+					}
 				}
 			};
 		};
 		this.auditServerClients = function() {
 			let me = this;
 			for (var k in me.clients) {
-				if ((new Date().getTime() - me.clients[k]) > 3000) {
+				if ((new Date().getTime() - me.clients[k]) > me.timeOut) {
 					delete me.clients[k];
 				}
 			};
