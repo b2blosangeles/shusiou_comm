@@ -57,14 +57,14 @@
 						data: {_sender: me.socket.id, _code : '_sessionRequest', ping_id: ping_id}});
 						// document.getElementById('income_info').innerHTML =  JSON.stringify(me.ping_id);
 						me.audit();
-					}, 1000);
+					}, 3000);
 				}
 			});			
 		};
 		this.audit = function() {
 			let me = this;
 			for (var k in me.ping_id) {
-				if ((new Date().getTime() - k) > 2000) {
+				if ((new Date().getTime() - k) > 4000) {
 					me.socket.close();
 					window.close();
 				}
