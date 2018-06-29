@@ -1,6 +1,7 @@
 (function () { 
 	var obj =  function () {
 		this.server = function(incomeData) {
+			console.log('---this.server---');
 			let me = this;
 			if (typeof me.cfg.onServerData === 'function') {
 				me.cfg.onServerData(incomeData, me.socket);
