@@ -43,7 +43,9 @@
 						delete me.ping_id[incomeData.data.ping_id];
 						me.client(incomeData);						
 					} else {
-						me.server(incomeData);
+						if (typeof me.cfg.onServerData === 'function') {
+							me.cfg.onServerData(incomeData, me.socket);
+						}
 					}
 				});
 				if (me.cfg.master_socket_id) { 
