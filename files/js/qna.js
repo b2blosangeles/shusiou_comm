@@ -5,7 +5,6 @@
 			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
 				_proxy: me.cfg.proxy, 
 				data: {
-				// data: {connection: [me.socket.id, incomeData.data._sender],
 				      ping_id : incomeData.data.ping_id, _code : '_ReSessionRequest',
 				      }});			
 		}		
@@ -28,10 +27,12 @@
 			data._sender = me.socket.id;
 			me.socket.emit('clientData', {_socket: socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
 				data: data});		
-		}		
+		}
+		this.getClients = function() {
+			let me = this;
+			return me.ping_id;
+		}
 		this.incomeClient = function(incomeData) {
-			console.log('---this.client---');
-			console.log(incomeData);
 			let me = this;
 			if (typeof me.cfg.onClientData === 'function') {
 				me.cfg.onClientData(incomeData, me.socket);
@@ -48,12 +49,10 @@
 					cfg.onConnect(me.socket);
 				}
 				me.socket.on('serverData', function(incomeData) {
-					// console.log(incomeData);
 					if (incomeData.data._code === '_sessionRequest') {
 						me.sessionService(incomeData);
 					} else if (incomeData.data._code === '_ReSessionRequest' && (incomeData.data.ping_id)) {
-						delete me.ping_id[incomeData.data.ping_id];
-						// me.incomeClient(incomeData);						
+						delete me.ping_id[incomeData.data.ping_id];						
 					} else if (incomeData.data._code === '_sendToServer') {
 						me.incomeServer(incomeData);
 					} else {
@@ -73,7 +72,6 @@
 		};
 		this.audit = function() {
 			let me = this;
-			console.log(me.ping_id);
 			for (var k in me.ping_id) {
 				if ((new Date().getTime() - k) > 3000) {
 					me.socket.close();
