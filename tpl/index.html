@@ -29,8 +29,9 @@
 			link : 'https://comm1.service.dev.shusiou.win/', 
 			proxy: ['http://comm1.service.dev.shusiou.win/', 'https://comm1.service.dev.shusiou.win/'],
 			onClientData : function(incomeData, socket) {
-				document.getElementById('income_info').innerHTML =  socket.id + new Date();
-					// JSON.stringify(me.ping_id);
+				document.getElementById('income_info').innerHTML =  
+					//socket.id + new Date();
+					JSON.stringify(incomeData);
 			}
 		});
 		let qna1 = new QNA();
