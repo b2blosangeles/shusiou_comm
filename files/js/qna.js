@@ -52,11 +52,9 @@
 						me.sessionService(incomeData);
 					} else if (incomeData.data._code === '_ReSessionRequest' && (incomeData.data.ping_id)) {
 						delete me.ping_id[incomeData.data.ping_id];
-						if (typeof me.cfg.onClientData === 'function') {
-							me.cfg.onClientData(incomeData, me.socket);
-						}						
+						me.client(incomeData);						
 					} else {
-						me.server();
+						me.server(incomeData);
 					}
 				});
 				if (me.cfg.master_socket_id) { 
