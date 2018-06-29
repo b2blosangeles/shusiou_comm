@@ -8,9 +8,9 @@
 				      ping_id : incomeData.data.ping_id, _code : '_ReSessionRequest',
 				      }});			
 		}		
-		this.server = function(incomeData) {
-			
+		this.server = function(incomeData) {			
 			console.log('---this.server---');
+			console.log(incomeData);
 			let me = this;
 			if (typeof me.cfg.onServerData === 'function') {
 				me.cfg.onServerData(incomeData, me.socket);
@@ -44,9 +44,7 @@
 							me.cfg.onClientData(incomeData, me.socket);
 						}						
 					} else {
-						if (typeof me.cfg.onServerData === 'function') {
-							me.cfg.onServerData(incomeData, me.socket);
-						}
+						me.server();
 					}
 				});
 				if (me.cfg.master_socket_id) { 
