@@ -55,7 +55,7 @@
 					console.log(me.socket.id);
 					console.log('<---me.socket.id---');
 				}, 2000
-			}
+			)
 			//}
 			me.socket.on('connect', function() {
 				if (typeof cfg.onConnect === 'function') {
