@@ -2,10 +2,9 @@
 	var obj =  function () {
 		this.sessionService = function(incomeData) {
 			let me = this;
-			console.log('---this.sessionService---');
 			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
 				_proxy: me.cfg.proxy, 
-				data: {connection: [me.socket.id, incomeData.data._sender], _code : 'resQnaRequest',
+				data: {connection: [me.socket.id, incomeData.data._sender],
 				      ping_id : incomeData.data.ping_id
 				      }});			
 		}		
