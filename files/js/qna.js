@@ -1,5 +1,13 @@
 (function () { 
 	var obj =  function () {
+		this.sessionService = function(incomeData) {
+			console.log('---this.sessionService---');
+			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
+				_proxy: me.cfg.proxy, 
+				data: {connection: [me.socket.id, incomeData.data._sender], _code : 'resQnaRequest',
+				      ping_id : incomeData.data.ping_id
+				      }});			
+		}		
 		this.server = function(incomeData) {
 			console.log('---this.server---');
 			let me = this;
@@ -28,7 +36,7 @@
 				me.socket.on('serverData', function(incomeData) {
 					console.log('---A --- this.server---');
 					console.log(incomeData);
-					if (incomeData.data._code === 'clientRequest') {
+					if (['clientRequest', '_sessionRequest'].indexOf(incomeData.data._code) !== -1) {
 						me.server(incomeData);
 					} else {
 						delete me.ping_id[incomeData.data.ping_id];
@@ -40,7 +48,7 @@
 						let ping_id = new Date().getTime();
 						me.ping_id[ping_id] = 1;
 						me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
-						data: {_sender: me.socket.id, _code : 'clientRequest', ping_id: ping_id}});
+						data: {_sender: me.socket.id, _code : '_sessionRequest', ping_id: ping_id}});
 						document.getElementById('income_info').innerHTML =  JSON.stringify(me.ping_id);
 						me.audit();
 					}, 1000);
