@@ -8,7 +8,7 @@
 				      ping_id : incomeData.data.ping_id, _code : '_ReSessionRequest',
 				      }});			
 		}		
-		this.server = function(incomeData) {			
+		this.incomeServer = function(incomeData) {			
 			console.log('---this.server---');
 			console.log(incomeData);
 			let me = this;
@@ -28,7 +28,7 @@
 			me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
 				data: data});		
 		}
-		this.client = function(incomeData) {
+		this.incomeClient = function(incomeData) {
 			console.log('---this.client---');
 			console.log(incomeData);
 			let me = this;
@@ -52,9 +52,9 @@
 						me.sessionService(incomeData);
 					} else if (incomeData.data._code === '_ReSessionRequest' && (incomeData.data.ping_id)) {
 						delete me.ping_id[incomeData.data.ping_id];
-						me.client(incomeData);						
+						me.incomeClient(incomeData);						
 					} else {
-						me.server(incomeData);
+						me.incomeServer(incomeData);
 					}
 				});
 				if (me.cfg.master_socket_id) { 
