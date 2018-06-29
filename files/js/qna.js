@@ -25,12 +25,13 @@
 		this.sendToServer = function(data) {
 			let me = this;
 			data._sender = me.socket.id;
-			me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
+			me.socket.emit('clientData', {_link: me.cfg.link, _proxy: me.cfg.proxy, 
 				data: data});		
 		}
 		this.sendToClient = function(data) {
 			let me = this;
 			data._sender = me.cfg.master_socket_id;
+			
 			me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
 				data: data});		
 		}		
@@ -59,9 +60,11 @@
 					} else if (incomeData.data._code === '_ReSessionRequest' && (incomeData.data.ping_id)) {
 						delete me.ping_id[incomeData.data.ping_id];
 						me.incomeClient(incomeData);						
-					} else {
+					} else if (incomeData.data._socket) {
 						me.incomeServer(incomeData);
-					}
+					} else {
+						me.incomeClient(incomeData);
+					} 
 				});
 				if (me.cfg.master_socket_id) { 
 					setInterval(function() {
