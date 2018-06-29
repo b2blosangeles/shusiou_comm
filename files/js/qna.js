@@ -1,6 +1,11 @@
 (function () { 
 	var obj =  function () {
 		this.server = function(incomeData) {
+			let me = this;
+			if (typeof me.cfg.server === 'function') {
+				me.cfg.server(incomeData);
+			}
+			return true;
 			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
 				_proxy: me.cfg.proxy, 
 				data: {connection: [socket.id, incomeData.data._sender], _code : 'resQnaRequest',
