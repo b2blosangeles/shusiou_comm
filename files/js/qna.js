@@ -2,8 +2,8 @@
 	var obj =  function () {
 		this.server = function(incomeData) {
 			let me = this;
-			if (typeof me.cfg.server === 'function') {
-				me.cfg.server(incomeData);
+			if (typeof me.cfg.onServerData === 'function') {
+				me.cfg.onServerData(incomeData, me.socket);
 			}
 			return true;
 			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
