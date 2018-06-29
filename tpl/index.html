@@ -23,11 +23,14 @@
 	</script>
 	<script src="/js/qna.js"></script>
 	<script>	
-		let qna = new QNA();
+		let qna = new _QNA_();
 		qna.init({ 
 			master_socket_id: '{$socket}', 
 			link : 'https://comm1.service.dev.shusiou.win/', 
 			proxy: ['http://comm1.service.dev.shusiou.win/', 'https://comm1.service.dev.shusiou.win/'],
+			onConnect : function(socket) {
+				qna.sendToServer({niu:'yesFF'});
+			}, 			
 			onClientData : function(incomeData, socket) {
 				document.getElementById('income_info').innerHTML =  
 					//socket.id + new Date();
@@ -37,11 +40,6 @@
 				window.close();
 			}
 		});
-		setTimeout(
-			function() {
-				qna.sendToServer({niu:'yes'});
-			}, 3000
-		);
 	</script>
 	
 </head>
