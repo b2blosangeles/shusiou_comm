@@ -35,8 +35,6 @@
 					cfg.onConnect(me.socket);
 				}
 				me.socket.on('serverData', function(incomeData) {
-					console.log('---A --- this.server---');
-					console.log(incomeData);
 					if (incomeData.data._code === '_sessionRequest') {
 						me.sessionService(incomeData);
 					} else if (incomeData.data.ping_id) {
