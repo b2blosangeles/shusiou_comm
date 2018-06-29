@@ -32,6 +32,9 @@
 				document.getElementById('income_info').innerHTML =  
 					//socket.id + new Date();
 					JSON.stringify(incomeData);
+			},
+			afterTimeout : function() {
+				window.close();
 			}
 		});
 		setTimeout(
