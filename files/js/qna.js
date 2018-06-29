@@ -2,6 +2,7 @@
 	var obj =  function () {
 		this.sessionService = function(incomeData) {
 			let me = this;
+			if (incomeData.data._sender) me.clients[incomeData.data._sender] = 1;
 			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
 				_proxy: me.cfg.proxy, 
 				data: {
@@ -49,7 +50,6 @@
 				if (typeof cfg.onConnect === 'function') {
 					cfg.onConnect(me.socket);
 				}
-				me.clients[me.socket.id] = 1;
 				me.socket.on('serverData', function(incomeData) {
 					if (incomeData.data._code === '_sessionRequest') {
 						me.sessionService(incomeData);
