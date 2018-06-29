@@ -3,9 +3,9 @@
 		this.sessionService = function(incomeData) {
 			let me = this;
 			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
-				_proxy: me.cfg.proxy, _code : '_ReSessionRequest',
+				_proxy: me.cfg.proxy, 
 				data: {connection: [me.socket.id, incomeData.data._sender],
-				      ping_id : incomeData.data.ping_id
+				      ping_id : incomeData.data.ping_id, _code : '_ReSessionRequest',
 				      }});			
 		}		
 		this.server = function(incomeData) {
