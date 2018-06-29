@@ -34,7 +34,11 @@
 					JSON.stringify(incomeData);
 			}
 		});
-		let qna1 = new QNA();
+		setTimeout(
+			function() {
+			qna.sendToServer({niu:'yes'});
+			}, 3000
+		);
 	</script>
 	
 </head>
