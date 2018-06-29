@@ -51,6 +51,7 @@
 				me.socket = io.connect(me.cfg.link);
 			console.log('---me.socket.id--->');
 			console.log(me.socket.id);
+			console.log('<---me.socket.id---');
 			//}
 			me.socket.on('connect', function() {
 				if (typeof cfg.onConnect === 'function') {
