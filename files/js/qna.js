@@ -45,10 +45,8 @@
 			me.clients = {};
 			me.cfg = cfg;
 			me.timeOut = ((me.cfg.timeOut) && (me.cfg.timeOut > 1999)) ? me.cfg.timeOut : 3000;
-			//if (cfg.socket) {
-			//	me.socket = cfg.socket;
-			//} else {
-				me.socket = io.connect(me.cfg.link);
+			
+			me.socket = io.connect(me.cfg.link);
 			setTimeout(
 				function() {
 					console.log('---me.socket.id--->');
@@ -87,6 +85,10 @@
 				}
 			});			
 		};
+		this.closeSocket = function() {
+			let me = this;
+			me.socket.close();
+		};		
 		this.auditClient = function() {
 			let me = this;
 			for (var k in me.ping_id) {
