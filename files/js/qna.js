@@ -16,6 +16,9 @@
 			
 			me.socket = io.connect(me.cfg.link);
 			me.socket.on('connect', function() {
+				if (typeOf cfg.onConnect === 'function') {
+					cfg.onConnect(me.socket);
+				}
 				me.socket.on('serverData', function(incomeData) {
 					if (incomeData.data._code === 'clientRequest') {
 						me.server(incomeData);
