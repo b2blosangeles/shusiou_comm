@@ -45,11 +45,13 @@
 			me.clients = {};
 			me.cfg = cfg;
 			me.timeOut = ((me.cfg.timeOut) && (me.cfg.timeOut > 1999)) ? me.cfg.timeOut : 3000;
-			if (cfg.socket) {
-				me.socket = cfg.socket;
-			} else {
+			//if (cfg.socket) {
+			//	me.socket = cfg.socket;
+			//} else {
 				me.socket = io.connect(me.cfg.link);
-			}
+			console.log('---me.socket.id--->');
+			console.log(me.socket.id);
+			//}
 			me.socket.on('connect', function() {
 				if (typeof cfg.onConnect === 'function') {
 					cfg.onConnect(me.socket);
