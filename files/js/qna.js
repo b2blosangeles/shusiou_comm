@@ -72,7 +72,6 @@
 				} else {
 					setInterval(function() {
 						me.auditServerClients();
-						console.log(me.clients);
 					}, 500);				
 				}
 			});			
