@@ -103,4 +103,5 @@
 		};		
 	};
 	window._QNA_ = obj;
+	console.log(typeof _QNA_);
 })();
