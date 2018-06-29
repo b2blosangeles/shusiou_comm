@@ -41,6 +41,7 @@
 		this.init = function(cfg) {
 			let me = this;
 			me.ping_id = {};
+			me.clients = {};
 			me.cfg = cfg;
 			
 			me.socket = io.connect(me.cfg.link);
@@ -48,6 +49,7 @@
 				if (typeof cfg.onConnect === 'function') {
 					cfg.onConnect(me.socket);
 				}
+				me.clients[me.socket.id] = 1;
 				me.socket.on('serverData', function(incomeData) {
 					if (incomeData.data._code === '_sessionRequest') {
 						me.sessionService(incomeData);
@@ -75,6 +77,7 @@
 			for (var k in me.ping_id) {
 				if ((new Date().getTime() - k) > 3000) {
 					me.socket.close();
+					delete me.clients[me.socket.id];
 					window.close();
 				}
 			};
