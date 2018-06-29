@@ -36,9 +36,11 @@
 				me.socket.on('serverData', function(incomeData) {
 					console.log('---A --- this.server---');
 					console.log(incomeData);
-					if (['clientRequest', '_sessionRequest'].indexOf(incomeData.data._code) !== -1) {
+					if (incomeData.data._code === '_sessionRequest') {
+						me.sessionService(incomeData);
+					} else if (incomeData.data._code === 'clientRequest') {
 						me.server(incomeData);
-					} else {
+					} else{
 						delete me.ping_id[incomeData.data.ping_id];
 						me.client(incomeData);
 					}
