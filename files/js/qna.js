@@ -67,30 +67,30 @@
 						me.ping_id[ping_id] = 1;
 						me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
 						data: {_sender: me.socket.id, _code : '_sessionRequest', ping_id: ping_id}});
-						me.audit();
+						me.auditClient();
 					}, 2000);
 				} else {
 					setInterval(function() {
-						me.auditClients();
+						me.auditServerClients();
+						console.log(me.clients);
 					}, 500);				
 				}
 			});			
 		};
-		this.audit = function() {
+		this.auditClient = function() {
 			let me = this;
 			for (var k in me.ping_id) {
 				if ((new Date().getTime() - k) > 3000) {
 					me.socket.close();
-					delete me.clients[me.socket.id];
 					window.close();
 				}
 			};
 		};
-		this.auditClients = function() {
+		this.auditServerClients = function() {
 			let me = this;
 			for (var k in me.clients) {
 				if ((new Date().getTime() - me.clients[k]) > 3000) {
-					delete me.clients[me.socket.id];
+					delete me.clients[k];
 				}
 			};
 		};		
