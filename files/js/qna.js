@@ -47,14 +47,6 @@
 			me.timeOut = ((me.cfg.timeOut) && (me.cfg.timeOut > 1999)) ? me.cfg.timeOut : 3000;
 			
 			me.socket = io.connect(me.cfg.link);
-			setTimeout(
-				function() {
-					console.log('---me.socket.id--->');
-					console.log(me.socket.id);
-					console.log('<---me.socket.id---');
-				}, 2000
-			)
-			//}
 			me.socket.on('connect', function() {
 				if (typeof cfg.onConnect === 'function') {
 					cfg.onConnect(me.socket);
