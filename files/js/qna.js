@@ -22,9 +22,9 @@
 			me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
 				data: data});		
 		}
-		this.sendToClient = function(data) {
+		this.sendToClient = function(data, socket_id) {
 			let me = this;
-			data._sender = me.cfg.master_socket_id;
+			data._sender = socket_id;
 			
 			me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
 				data: data});		
