@@ -11,6 +11,7 @@
 		this.incomeServer = function(incomeData) {			
 			console.log('---this.server---');
 			console.log(incomeData);
+			console.log('---this.server-ed--');
 			let me = this;
 			if (typeof me.cfg.onServerData === 'function') {
 				me.cfg.onServerData(incomeData, me.socket);
