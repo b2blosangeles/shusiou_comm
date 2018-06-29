@@ -102,5 +102,5 @@
 			};
 		};		
 	};
-	window.QNA = obj;
+	window._QNA = obj;
 })();
