@@ -24,7 +24,7 @@
 						me.client(incomeData);
 					}
 				});
-				if (me.cfg.master_socket) { 
+				if (me.cfg.master_socket_id) { 
 					setInterval(function() {
 						let ping_id = new Date().getTime();
 						me.ping_id[ping_id] = 1;
