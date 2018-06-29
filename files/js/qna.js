@@ -3,7 +3,7 @@
 		this.sessionService = function(incomeData) {
 			let me = this;
 			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
-				_proxy: me.cfg.proxy, 
+				_proxy: me.cfg.proxy, _code : '_ReSessionRequest',
 				data: {connection: [me.socket.id, incomeData.data._sender],
 				      ping_id : incomeData.data.ping_id
 				      }});			
@@ -37,9 +37,8 @@
 				me.socket.on('serverData', function(incomeData) {
 					if (incomeData.data._code === '_sessionRequest') {
 						me.sessionService(incomeData);
-					} else if (incomeData.data.ping_id) {
+					} else if (incomeData.data._code === '_ReSessionRequest' && (incomeData.data.ping_id)) {
 						delete me.ping_id[incomeData.data.ping_id];
-						// me.client(incomeData);
 						if (typeof me.cfg.onClientData === 'function') {
 							me.cfg.onClientData(incomeData, me.socket);
 						}						
