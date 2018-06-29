@@ -49,9 +49,13 @@
 			//	me.socket = cfg.socket;
 			//} else {
 				me.socket = io.connect(me.cfg.link);
-			console.log('---me.socket.id--->');
-			console.log(me.socket.id);
-			console.log('<---me.socket.id---');
+			setTimeout(
+				function() {
+					console.log('---me.socket.id--->');
+					console.log(me.socket.id);
+					console.log('<---me.socket.id---');
+				}, 2000
+			}
 			//}
 			me.socket.on('connect', function() {
 				if (typeof cfg.onConnect === 'function') {
