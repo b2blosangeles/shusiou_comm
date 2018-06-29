@@ -40,7 +40,7 @@
 						let ping_id = new Date().getTime();
 						me.ping_id[ping_id] = 1;
 						me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
-						data: {_sender: me.socket.id, _code : 'qnaRequest', ping_id: ping_id}});
+						data: {_sender: me.socket.id, _code : 'clientRequest', ping_id: ping_id}});
 						document.getElementById('income_info').innerHTML =  JSON.stringify(me.ping_id);
 						me.audit();
 					}, 1000);
