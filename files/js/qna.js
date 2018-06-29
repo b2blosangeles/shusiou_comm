@@ -16,7 +16,7 @@
 			
 			me.socket = io.connect(me.cfg.link);
 			me.socket.on('connect', function() {
-				if (typeOf cfg.onConnect === 'function') {
+				if (typeof cfg.onConnect === 'function') {
 					cfg.onConnect(me.socket);
 				}
 				me.socket.on('serverData', function(incomeData) {
