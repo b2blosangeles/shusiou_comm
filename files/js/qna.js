@@ -30,7 +30,7 @@
 		}
 		this.getClients = function() {
 			let me = this;
-			return me.ping_id;
+			return me.clients;
 		}
 		this.incomeClient = function(incomeData) {
 			let me = this;
