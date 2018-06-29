@@ -22,7 +22,13 @@
 				      ping_id : incomeData.data.ping_id
 				      }});			
 		}
-		this.client = function(incomeData) {			
+		this.client = function(incomeData) {
+			console.log('---this.client---');
+			console.log(incomeData);
+			let me = this;
+			if (typeof me.cfg.onClientData === 'function') {
+				me.cfg.onClientData(incomeData, me.socket);
+			}			
 		}		
 		this.init = function(cfg) {
 			let me = this;
