@@ -1,6 +1,7 @@
 (function () { 
 	var obj =  function () {
 		this.sessionService = function(incomeData) {
+			let me = this;
 			console.log('---this.sessionService---');
 			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
 				_proxy: me.cfg.proxy, 
@@ -9,6 +10,7 @@
 				      }});			
 		}		
 		this.server = function(incomeData) {
+			
 			console.log('---this.server---');
 			let me = this;
 			if (typeof me.cfg.onServerData === 'function') {
