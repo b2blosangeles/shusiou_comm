@@ -22,6 +22,12 @@
 				      ping_id : incomeData.data.ping_id
 				      }});			
 		}
+		this.sendToServer = function(data) {
+			let me = this;
+			data._sender = me.socket.id;
+			me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
+				data: data});		
+		}
 		this.client = function(incomeData) {
 			console.log('---this.client---');
 			console.log(incomeData);
