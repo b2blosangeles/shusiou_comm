@@ -27,6 +27,7 @@
 				}
 				me.socket.on('serverData', function(incomeData) {
 					console.log('---A --- this.server---');
+					console.log(incomeData);
 					if (incomeData.data._code === 'clientRequest') {
 						me.server(incomeData);
 					} else {
