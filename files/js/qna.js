@@ -24,7 +24,7 @@
 		}
 		this.sendToClient = function(data, socket_id) {
 			let me = this;
-			data._sender = socket_id;
+			data._sender = me.socket_id;
 			console.log('--sending to client');
 			me.socket.emit('clientData', {_socket: socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
 				data: data});		
