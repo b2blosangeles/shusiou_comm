@@ -25,8 +25,8 @@
 		this.sendToClient = function(data, socket_id) {
 			let me = this;
 			data._sender = socket_id;
-			
-			me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
+			console.log('--sending to client');
+			me.socket.emit('clientData', {_socket: socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
 				data: data});		
 		}		
 		this.incomeClient = function(incomeData) {
