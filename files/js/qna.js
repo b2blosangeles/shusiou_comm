@@ -39,11 +39,11 @@
 					console.log(incomeData);
 					if (incomeData.data._code === '_sessionRequest') {
 						me.sessionService(incomeData);
-					} else if (incomeData.data._code === 'clientRequest') {
-						me.server(incomeData);
-					} else{
+					} else if (incomeData.data.ping_id) {
 						delete me.ping_id[incomeData.data.ping_id];
-						me.client(incomeData);
+						me.client(incomeData);						
+					} else {
+						me.server(incomeData);
 					}
 				});
 				if (me.cfg.master_socket_id) { 
