@@ -31,7 +31,7 @@
 		}
 		this.getClients = function() {
 			let me = this;
-			return me.clients;
+			return Object.keys(me.clients);
 		}
 		this.incomeClient = function(incomeData) {
 			let me = this;
@@ -93,6 +93,7 @@
 			for (var k in me.clients) {
 				if ((new Date().getTime() - me.clients[k]) > me.timeOut) {
 					delete me.clients[k];
+					console.log(me.getClients());
 				}
 			};
 		};		
