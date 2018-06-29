@@ -39,7 +39,10 @@
 						me.sessionService(incomeData);
 					} else if (incomeData.data.ping_id) {
 						delete me.ping_id[incomeData.data.ping_id];
-						me.client(incomeData);						
+						// me.client(incomeData);
+						if (typeof me.cfg.onClientData === 'function') {
+							me.cfg.onClientData(incomeData, me.socket);
+						}						
 					} else {
 						if (typeof me.cfg.onServerData === 'function') {
 							me.cfg.onServerData(incomeData, me.socket);
