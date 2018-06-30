@@ -97,6 +97,7 @@
 		};
 		this.auditServerClients = function() {
 			let me = this;
+			return true;
 			for (var k in me.clients) {
 				if ((new Date().getTime() - me.clients[k]) > me.timeOut) {
 					delete me.clients[k];
