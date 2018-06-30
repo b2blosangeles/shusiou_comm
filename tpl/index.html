@@ -38,7 +38,12 @@
 				});
 			}, 			
 			onClientData : function(incomeData, socket) {
-				document.getElementById('income_info').innerHTML =  incomeData.data.dt;
+				switch (incomeData.cmd) {
+					case 'start' :	
+						document.getElementById('income_info').innerHTML =  'start';
+						break
+					default:	
+				}
 			},
 			afterTimeout : function() {
 				window.close();
