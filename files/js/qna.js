@@ -72,7 +72,7 @@
 						me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
 						data: {_sender: me.socket.id, _code : '_sessionRequest', ping_id: ping_id}});
 						me.auditClient();
-					}, 1000);
+					}, me.timeOut - 1000);
 				} else {
 					setInterval(function() {
 						me.auditServerClients();
@@ -98,8 +98,8 @@
 		this.auditServerClients = function() {
 			let me = this;
 			//console.log(me.timeOut);
-			console.log(me.getClients());
-			return true;
+			// console.log(me.getClients());
+			// return true;
 			for (var k in me.clients) {
 				if ((new Date().getTime() - me.clients[k]) > me.timeOut) {
 					delete me.clients[k];
