@@ -39,7 +39,7 @@
 			}, 			
 			onClientData : function(incomeData, socket) {
 				console.log(incomeData);
-				switch (incomeData.cmd) {
+				switch (incomeData.data.cmd) {
 					case 'start' :	
 						document.getElementById('income_info').innerHTML =  'start';
 						break;
