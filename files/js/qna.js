@@ -3,9 +3,8 @@
 		this.sessionService = function(incomeData) {
 			let me = this;
 			if (incomeData.data._sender) {
-				console.log('---niu 3---' + incomeData.data._sender);
 				me.clients[incomeData.data._sender] = new Date().getTime();
-				
+				console.log(me.getClients());
 			}
 			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
 				_proxy: me.cfg.proxy, 
