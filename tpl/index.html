@@ -38,6 +38,7 @@
 				});
 			}, 			
 			onClientData : function(incomeData, socket) {
+				console.log(incomeDate);
 				switch (incomeData.cmd) {
 					case 'start' :	
 						document.getElementById('income_info').innerHTML =  'start';
