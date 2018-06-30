@@ -2,7 +2,10 @@
 	var obj =  function () {
 		this.sessionService = function(incomeData) {
 			let me = this;
-			if (incomeData.data._sender) me.clients[incomeData.data._sender] = new Date().getTime();
+			if (incomeData.data._sender) {
+				console.log('---niu---' + incomeData.data._sender);
+				me.clients[incomeData.data._sender] = new Date().getTime();
+			}
 			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
 				_proxy: me.cfg.proxy, 
 				data: {
