@@ -34,9 +34,7 @@
 				qna.sendToServer({niu:'yesFF'});
 			}, 			
 			onClientData : function(incomeData, socket) {
-				document.getElementById('income_info').innerHTML =  
-					//socket.id + new Date();
-					JSON.stringify(incomeData);
+				document.getElementById('income_info').innerHTML =  incomeData.data.dt;
 			},
 			afterTimeout : function() {
 				window.close();
