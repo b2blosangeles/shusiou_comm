@@ -97,6 +97,7 @@
 		};
 		this.auditServerClients = function() {
 			let me = this;
+			console.log(me.timeOut);
 			console.log(me.getClients());
 			return true;
 			for (var k in me.clients) {
