@@ -9,9 +9,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script>
+		/*
 	if (annyang) {
 	  // Let's define our first command. First the text we expect, and then the function it should call
-	  var commands = {
+	  
+	var commands = {
 	    'good': function() {
 	      alert('good job');
 	    }
@@ -23,6 +25,7 @@
 	  // Start listening. You can call this here, or attach this call to an event, button, etc.
 	//  annyang.start();
 	}
+	*/
 	</script>
 	<script src="/js/qna.js"></script>
 	<script>	
@@ -47,14 +50,17 @@
 						var commands = {
 							'good': function() {
 								document.getElementById('income_info').innerHTML =  'good';
+								$('.fa-microphone').toggleClass('status_on status_ff');
 	    						},
 							'nice': function() {
 								document.getElementById('income_info').innerHTML =  'nice';
+								$('.fa-microphone').toggleClass('status_on status_ff');
 	    						}
 	  					};						
-						
+						annyang.addCommands(commands);
 						break;
 					case 'stop' :
+						annyang.abort();
 						$('.fa-microphone').toggleClass('status_on status_off');
 						document.getElementById('income_info').innerHTML =  'stopped';
 						break						
