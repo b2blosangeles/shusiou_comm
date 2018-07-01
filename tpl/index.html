@@ -20,7 +20,7 @@
 	  annyang.addCommands(commands);
 
 	  // Start listening. You can call this here, or attach this call to an event, button, etc.
-	  annyang.start();
+	//  annyang.start();
 	}
 	</script>
 	<script src="/js/qna.js"></script>
@@ -33,7 +33,7 @@
 			onConnect : function(socket) {
 				qna.sendToServer({niu:
 						  function() {
-						  	alert('I am ready');
+						  	// alert('I am ready');
 						  }.toString()
 				});
 			}, 			
@@ -41,7 +41,16 @@
 				console.log(incomeData);
 				switch (incomeData.data.cmd) {
 					case 'start' :	
-						document.getElementById('income_info').innerHTML =  'start';
+						annyang.start({ autoRestart: false });
+						var commands = {
+							'good': function() {
+								document.getElementById('income_info').innerHTML =  'good';
+	    						},
+							'nice': function() {
+								document.getElementById('income_info').innerHTML =  'nice';
+	    						}
+	  					};						
+						
 						break;
 					case 'stop' :	
 						document.getElementById('income_info').innerHTML =  'stop';
