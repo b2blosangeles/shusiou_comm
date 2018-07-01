@@ -46,7 +46,7 @@
 				switch (incomeData.data.cmd) {
 					case 'start' :	
 						$('.fa-microphone').toggleClass('status_off status_on');
-						annyang.start({ autoRestart: false });
+						
 						var commands = {
 							'good': function() {
 								document.getElementById('income_info').innerHTML =  'good';
@@ -58,6 +58,7 @@
 	    						}
 	  					};						
 						annyang.addCommands(commands);
+						annyang.start({ autoRestart: false });
 						break;
 					case 'stop' :
 						annyang.abort();
