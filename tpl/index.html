@@ -45,24 +45,26 @@
 				console.log(incomeData);
 				switch (incomeData.data.cmd) {
 					case 'start' :	
-						$('.fa-microphone').toggleClass('status_off status_on');
+						$('.fa-microphone').removeClass('status_off').addClass('status_on');
 						$('#income_info').html('');
 						var commands = {
 							'good': function() {
 								document.getElementById('income_info').innerHTML =  'good';
-								$('.fa-microphone').toggleClass('status_on status_off');
+								$('.fa-microphone')
+									.removeClass('status_on').addClass('status_off');
 	    						},
 							'nice': function() {
 								document.getElementById('income_info').innerHTML =  'nice';
-								$('.fa-microphone').toggleClass('status_on status_off');
+								$('.fa-microphone')
+									.removeClass('status_on').addClass('status_off');
 	    						}
 	  					};						
 						annyang.addCommands(commands);
-						annyang.start({ autoRestart: false, continuous: false });
+						annyang.start({ autoRestart: false, continuous: true });
 						break;
 					case 'stop' :
 						annyang.abort();
-						$('.fa-microphone').toggleClass('status_on status_off');
+						$('.fa-microphone').removeClass('status_on').addClass('status_off');
 						document.getElementById('income_info').innerHTML =  'stopped';
 						break						
 					default:	
