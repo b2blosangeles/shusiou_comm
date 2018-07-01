@@ -42,6 +42,7 @@
 				console.log(incomeData);
 				switch (incomeData.data.cmd) {
 					case 'start' :	
+						$('.fa-microphone').toggleClass('status_off status_on');
 						annyang.start({ autoRestart: false });
 						var commands = {
 							'good': function() {
@@ -53,8 +54,9 @@
 	  					};						
 						
 						break;
-					case 'stop' :	
-						document.getElementById('income_info').innerHTML =  'stop';
+					case 'stop' :
+						$('.fa-microphone').toggleClass('status_on status_off');
+						document.getElementById('income_info').innerHTML =  'stopped';
 						break						
 					default:	
 				}
@@ -64,11 +66,15 @@
 			}
 		});
 	</script>
-	
+	<style>
+		.status_on { color:darkgreen }
+		.status_off { color:darkred }
+	</style>
 </head>
+	
 <body style="text-align:center">
 	加密语言通信<br/><br/>
-	<i class="fa fa-microphone" aria-hidden="true" style="font-size:5em; color:darkgreen"></i><br/><br/>
-	<div id="income_info" style="font-size:0.6em; color:darkred"></div>
+	<i class="fa fa-microphone status_off" aria-hidden="true" style="font-size:5em;"></i><br/><br/>
+	<div id="income_info" style="font-size:0.6em;" ></div>
 </body>
 </html>
