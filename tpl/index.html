@@ -46,7 +46,7 @@
 				switch (incomeData.data.cmd) {
 					case 'start' :	
 						$('.fa-microphone').toggleClass('status_off status_on');
-						
+						$('#income_info').html('');
 						var commands = {
 							'good': function() {
 								document.getElementById('income_info').innerHTML =  'good';
