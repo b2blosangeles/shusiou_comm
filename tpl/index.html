@@ -70,6 +70,9 @@
 				window.close();
 			}
 		});
+		function onUnload() {
+			qna.sendToServer({clientMessage: null});
+		}
 	</script>
 	<style>
 		.status_on { color:darkgreen }
@@ -77,7 +80,7 @@
 	</style>
 </head>
 	
-<body style="text-align:center">
+<body style="text-align:center"  onunload="onUnload()">
 	加密语言通信<br/><br/>
 	<i class="fa fa-microphone status_off" aria-hidden="true" style="font-size:5em;"></i><br/><br/>
 	<div id="income_info" style="font-size:0.6em;" ></div>
