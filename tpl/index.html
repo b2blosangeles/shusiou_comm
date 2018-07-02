@@ -35,11 +35,7 @@
 			link : 'https://comm1.service.dev.shusiou.win/', 
 			proxy: ['http://comm1.service.dev.shusiou.win/', 'https://comm1.service.dev.shusiou.win/'],
 			onConnect : function(socket) {
-				qna.sendToServer({niu:
-						  function() {
-						  	// alert('I am ready');
-						  }.toString()
-				});
+				qna.sendToServer({clientMessage: socket.id});
 			}, 			
 			onClientData : function(incomeData, socket) {
 				console.log(incomeData);
