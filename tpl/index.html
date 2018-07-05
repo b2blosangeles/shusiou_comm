@@ -77,6 +77,9 @@
 		function onUnload() {
 			qna.sendToServer({clientMessage: null});
 		}
+		function sendToServer() {
+			qna.sendToServer({clientMessage: {cmd: 'pingbo'}});
+		}		
 	</script>
 	<style>
 		.status_on { color:darkgreen }
@@ -87,6 +90,6 @@
 <body style="text-align:center"  onunload="onUnload()">
 	加密语言通信<br/><br/>
 	<i class="fa fa-microphone status_off" aria-hidden="true" style="font-size:5em;"></i><br/><br/>
-	<div id="income_info" style="font-size:0.6em;" ></div>
+	<div id="income_info" style="font-size:0.6em;" onClick="sendToServer()"></div>
 </body>
 </html>
