@@ -35,14 +35,14 @@
 			link : 'https://comm1.service.dev.shusiou.win/', 
 			proxy: ['http://comm1.service.dev.shusiou.win/', 'https://comm1.service.dev.shusiou.win/'],
 			onConnect : function(socket) {
-				qna.sendToServer({clientMessage: {cmd: 'pingbo', dt:new Date().getTime(), sender:socket.id}});
+				qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
 			}, 			
 			onClientData : function(incomeData, socket) {
 				console.log(incomeData);
 				switch (incomeData.data.cmd) {
 					case 'pingbo' :
 						$('#income_info').html(JSON.stringify(incomeData.data));
-						qna.sendToServer({clientMessage:{cmd: 'pingbo', dt:new Date().getTime()}});
+						qna.sendToServer({clientMessage:{cmd: 'pingbo', sender:socket.id}});
 						break;
 					case 'start' :	
 						$('.fa-microphone').removeClass('status_off').addClass('status_on');
