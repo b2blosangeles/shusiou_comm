@@ -42,6 +42,7 @@
 				switch (incomeData.data.cmd) {
 					case 'pingbo' :
 						$('#income_info').html(JSON.stringify(incomeData.data));
+						break;
 					case 'start' :	
 						$('.fa-microphone').removeClass('status_off').addClass('status_on');
 						$('#income_info').html('');
