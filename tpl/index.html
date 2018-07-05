@@ -42,7 +42,7 @@
 				switch (incomeData.data.cmd) {
 					case 'pingbo' :
 						$('#income_info').html(JSON.stringify(incomeData.data));
-						qna.sendToServer({cmd: 'pingbo', dt : new Date()});
+						qna.sendToServer({clientMessage:{cmd: 'pingbo', dt : new Date()}});
 						break;
 					case 'start' :	
 						$('.fa-microphone').removeClass('status_off').addClass('status_on');
