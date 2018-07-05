@@ -35,7 +35,7 @@
 			link : 'https://comm1.service.dev.shusiou.win/', 
 			proxy: ['http://comm1.service.dev.shusiou.win/', 'https://comm1.service.dev.shusiou.win/'],
 			onConnect : function(socket) {
-				//qna.sendToServer({clientMessage: socket.id});
+				qna.sendToServer({clientMessage: {cmd: 'pingbo', dt:new Date().getTime(), sender:spcket.id}});
 			}, 			
 			onClientData : function(incomeData, socket) {
 				console.log(incomeData);
