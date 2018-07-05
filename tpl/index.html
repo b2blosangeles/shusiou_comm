@@ -41,7 +41,7 @@
 				console.log(incomeData);
 				switch (incomeData.data.cmd) {
 					case 'pingbo' :
-						$('#income_info').html(JSON.stringify(incomeData.data));
+						$('#income_info').html(new Date().getTime() + ' coming');
 						qna.sendToServer({clientMessage:{cmd: 'pingbo', sender:socket.id}});
 						break;
 					case 'start' :	
