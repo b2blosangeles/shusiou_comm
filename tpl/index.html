@@ -45,7 +45,7 @@
 						
 						// qna.sendToServer({clientMessage:{cmd: 'pingbo', sender:socket.id}});
 						break;
-					case 'start' :	
+					case 'stop' :	
 						$('.fa-microphone').removeClass('status_off').addClass('status_on');
 						$('#income_info').html('');
 						var commands = {
@@ -64,7 +64,7 @@
 						annyang.addCommands(commands);
 						annyang.start({ autoRestart: false, continuous: false });
 						break;
-					case 'stop' :
+					case 'start' :
 						annyang.abort();
 						$('.fa-microphone').removeClass('status_on').addClass('status_off');
 						document.getElementById('income_info').innerHTML =  'stopped';
