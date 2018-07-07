@@ -42,6 +42,7 @@
 				switch (incomeData.data.cmd) {
 					case 'pingbo' :
 						$('#income_info').html(new Date().getTime() + ' coming');
+						
 						// qna.sendToServer({clientMessage:{cmd: 'pingbo', sender:socket.id}});
 						break;
 					case 'start' :	
@@ -50,6 +51,7 @@
 						var commands = {
 							'good': function() {
 								document.getElementById('income_info').innerHTML =  'good';
+								qna.sendToServer({clientMessage: {cmd: 'pingbo'}});
 								$('.fa-microphone')
 									.removeClass('status_on').addClass('status_off');
 	    						},
