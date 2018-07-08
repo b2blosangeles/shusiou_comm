@@ -59,6 +59,7 @@
 					}
 				};						
 				annyang.addCommands(commands);
+				annyang.setLanguage('en-US');
 				annyang.start({ autoRestart: true});
 				$('.fa-microphone').removeClass('status_off').addClass('status_on');
 				$('#income_info').html('ready');
