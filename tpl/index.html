@@ -53,7 +53,9 @@
 					}
 				};						
 				annyang.addCommands(commands);
-				annyang.start({ autoRestart: true, continuous: false});				
+				annyang.start({ autoRestart: true, continuous: false});
+				$('.fa-microphone').removeClass('status_off').addClass('status_on');
+				$('#income_info').html('ready');
 			}, 			
 			onClientData : function(incomeData, socket) {
 				console.log(incomeData);
