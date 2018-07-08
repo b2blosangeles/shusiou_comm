@@ -51,18 +51,22 @@
 						var commands = {
 							'good': function() {
 								document.getElementById('income_info').innerHTML =  'good';
-								qna.sendToServer({clientMessage: {cmd: 'pingbo'}});
+								qna.sendToServer({clientMessage: 
+										  {cmd: 'pingbo', data: 'good'}});
 								$('.fa-microphone')
 									.removeClass('status_on').addClass('status_off');
 	    						},
 							'nice': function() {
 								document.getElementById('income_info').innerHTML =  'nice';
+								qna.sendToServer({clientMessage: 
+										  {cmd: 'pingbo', data: 'nice'}});
 								$('.fa-microphone')
 									.removeClass('status_on').addClass('status_off');
 	    						}
 	  					};						
 						annyang.addCommands(commands);
-						annyang.start({ autoRestart: false, continuous: false });
+						//annyang.start({ autoRestart: false, continuous: false });
+						annyang.start({ autoRestart: true });
 						break;
 					case 'stop' :
 						annyang.abort();
