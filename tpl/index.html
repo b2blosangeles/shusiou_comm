@@ -36,6 +36,24 @@
 			proxy: ['http://comm1.service.dev.shusiou.win/', 'https://comm1.service.dev.shusiou.win/'],
 			onConnect : function(socket) {
 				qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
+				var commands = {
+					'good': function() {
+						document.getElementById('income_info').innerHTML =  'good';
+						qna.sendToServer({clientMessage: 
+								  {cmd: 'pingbo', data: 'good'}});
+						//$('.fa-microphone')
+						//	.removeClass('status_on').addClass('status_off');
+					},
+					'nice': function() {
+						document.getElementById('income_info').innerHTML =  'nice';
+						qna.sendToServer({clientMessage: 
+								  {cmd: 'pingbo', data: 'nice'}});
+						//$('.fa-microphone')
+						//	.removeClass('status_on').addClass('status_off');
+					}
+				};						
+				annyang.addCommands(commands);
+				annyang.start({ autoRestart: true, continuous: false});				
 			}, 			
 			onClientData : function(incomeData, socket) {
 				console.log(incomeData);
@@ -48,6 +66,7 @@
 					case 'start' :	
 						$('.fa-microphone').removeClass('status_off').addClass('status_on');
 						$('#income_info').html('');
+						/*
 						var commands = {
 							'good': function() {
 								document.getElementById('income_info').innerHTML =  'good';
@@ -67,6 +86,7 @@
 						annyang.addCommands(commands);
 						//annyang.start({ autoRestart: false, continuous: false });
 						annyang.start({ autoRestart: true, continuous: false});
+						*/
 						break;
 					case 'stop' :
 						annyang.abort();
