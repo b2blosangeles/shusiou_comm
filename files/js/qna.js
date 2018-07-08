@@ -71,7 +71,7 @@
 						me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
 						data: {_sender: me.socket.id, _code : '_sessionRequest', ping_id: ping_id}});
 						me.auditClient();
-					}, me.timeOut - 1000);
+					}, 1000);
 				} else {
 					setInterval(function() {
 						me.auditServerClients();
