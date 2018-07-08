@@ -41,7 +41,9 @@
 						document.getElementById('income_info').innerHTML =  'good';
 						qna.sendToServer({clientMessage: 
 								  {cmd: 'pingbo', data: 'good'}});
-						annyang.pause();
+						annyang.pause(function() {
+							alert('niu');
+						});
 						//annyang.abort();
 						annyang.resume();
 						//$('.fa-microphone')
@@ -51,7 +53,9 @@
 						document.getElementById('income_info').innerHTML =  'nice';
 						qna.sendToServer({clientMessage: 
 								  {cmd: 'pingbo', data: 'nice'}});
-						annyang.pause();
+						annyang.pause(function() {
+							alert('niu nice');
+						});
 						//annyang.abort();
 						annyang.resume();
 						//$('.fa-microphone')
