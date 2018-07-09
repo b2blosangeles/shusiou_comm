@@ -17,10 +17,11 @@ var msg = new SpeechSynthesisUtterance();
 setTimeout(function() {
 		var voices = window.speechSynthesis.getVoices();
 		console.log(JSON.stringfy(voices));
-}, 1000)
-msg.voice = voices[3];
-msg.text = "Hello World";
-speechSynthesis.speak(msg);		
+		msg.voice = voices[3];
+		msg.text = "Hello World";
+		speechSynthesis.speak(msg);
+}, 3000)
+		
 		
 	/*	
 const artyom = new Artyom();
