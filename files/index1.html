@@ -16,7 +16,7 @@ window.speechSynthesis.speak(msg);
 var msg = new SpeechSynthesisUtterance();
 setTimeout(function() {
 		var voices = window.speechSynthesis.getVoices();
-		console.log(JSON.stringify(voices));
+		console.log(voices);
 		msg.voice = voices[3];
 		msg.text = "Hello World";
 		speechSynthesis.speak(msg);
