@@ -25,7 +25,9 @@ function startOneCommandArtyom(){
 		 
 		var commandHello = {
 		    indexes:['good'], // These spoken words will trigger the execution of the command
-		    action:function(){ // Action to be executed when a index match with spoken word
+		    action:function(i,wildcard){ // Action to be executed when a index match with spoken word
+			    console.log(i);
+			    console.log(wildcard);
 			    console.log('Hey buddy ! How are you today?');
 			artyom.say("Hey buddy ! How are you today?");
 		    }
