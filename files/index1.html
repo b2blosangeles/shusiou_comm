@@ -12,7 +12,16 @@
 const artyom = new Artyom();
 // This function activates artyom and will listen and execute only 1 command (for http connections)
 function startOneCommandArtyom(){
-    //artyom.fatality();// use this to stop any of
+    artyom.fatality();// use this to stop any of
+
+    setTimeout(function(){// if you use artyom.fatality , wait 250 ms to initialize again.
+         artyom.initialize({
+            lang:"en-GB",// A lot of languages are supported. Read the docs !
+            continuous:false,// recognize 1 command and stop listening !
+            listen:true, // Start recognizing
+            debug:true, // Show everything in the console
+            speed:1 // talk normally
+        }).then(function(){
 		var commandHello = {
 		    indexes:['good', 'nice'], // These spoken words will trigger the execution of the command
 		    action:function(i,wildcard){ // Action to be executed when a index match with spoken word
@@ -22,16 +31,8 @@ function startOneCommandArtyom(){
 			//artyom.say("Hey buddy ! How are you today?");
 		    }
 		};
-		artyom.addCommands(commandHello);
-    setTimeout(function(){// if you use artyom.fatality , wait 250 ms to initialize again.
-         artyom.initialize({
-            lang:"en-GB",// A lot of languages are supported. Read the docs !
-            continuous:false,// recognize 1 command and stop listening !
-            listen:true, // Start recognizing
-            debug:true, // Show everything in the console
-            speed:1 // talk normally
-        }).then(function(){
-		    console.log("Ready to work B !");
+		artyom.addCommands(commandHello);		 
+		    console.log("Ready to work C !");
 	}).catch((err) => {
 	    console.error("Artyom couldn't be initialized: ", err);
 	});
