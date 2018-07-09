@@ -1,1 +1,111 @@
-test
+<!DOCTYPE html>
+<html>
+<head>
+    <title>加密语言通信-1</title>
+	<meta charset="utf-8" />
+	
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script>
+		/*
+	if (annyang) {
+	  // Let's define our first command. First the text we expect, and then the function it should call
+	  
+	var commands = {
+	    'good': function() {
+	      alert('good job');
+	    }
+	  };
+
+	  // Add our commands to annyang
+	  annyang.addCommands(commands);
+
+	  // Start listening. You can call this here, or attach this call to an event, button, etc.
+	//  annyang.start();
+	}
+	*/
+	</script>
+	<script src="/js/qna.js"></script>
+	<script>	
+		let qna = new _QNA_();
+		qna.init({ 
+			master_socket_id: '{$socket}', 
+			link : 'https://comm1.service.dev.shusiou.win/', 
+			proxy: ['http://comm1.service.dev.shusiou.win/', 'https://comm1.service.dev.shusiou.win/'],
+			onConnect : function(socket) {
+				qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
+				var commands = {
+					'good': function() {
+						document.getElementById('income_info').innerHTML =  'good';
+						qna.sendToServer({clientMessage: 
+								  {cmd: 'pingbo', data: 'good'}});
+						// annyang.pause();
+						//annyang.abort();
+						// annyang.resume();
+						//$('.fa-microphone')
+						//	.removeClass('status_on').addClass('status_off');
+					},
+					'nice': function() {
+						document.getElementById('income_info').innerHTML =  'nice';
+						qna.sendToServer({clientMessage: 
+								  {cmd: 'pingbo', data: 'nice'}});
+						// annyang.pause();
+						//annyang.abort();
+						// annyang.resume();
+						//$('.fa-microphone')
+						//	.removeClass('status_on').addClass('status_off');
+					}
+				};						
+				annyang.addCommands(commands);
+				annyang.setLanguage('en-US');
+				annyang.start({ autoRestart: true});
+				$('.fa-microphone').removeClass('status_off').addClass('status_on');
+				$('#income_info').html('ready');
+			}, 			
+			onClientData : function(incomeData, socket) {
+				console.log(incomeData);
+				/*
+				switch (incomeData.data.cmd) {
+					case 'pingbo' :
+						$('#income_info').html(new Date().getTime() + ' coming');
+						break;
+					case 'start' :	
+						$('.fa-microphone').removeClass('status_off').addClass('status_on');
+						$('#income_info').html('');
+						break;
+					case 'stop' :
+						annyang.abort();
+						$('.fa-microphone').removeClass('status_on').addClass('status_off');
+						document.getElementById('income_info').innerHTML =  'stopped';
+						break						
+					default:	
+				}
+				*/
+			},
+			afterTimeout : function() {
+				window.close();
+			}
+		});
+		function onUnload() {
+			qna.sendToServer({clientMessage: null});
+		}
+		function sendToServer() {
+			qna.sendToServer({clientMessage: {cmd: 'pingbo'}});
+			console.log('--==sendToServer==--');
+		}		
+	</script>
+	<style>
+		.status_on { color:darkgreen }
+		.status_off { color:darkred }
+	</style>
+</head>
+	
+<body style="text-align:center"  onunload="onUnload()">
+	加密语言通信<br/><br/>
+	<i class="fa fa-microphone status_off" aria-hidden="true" style="font-size:5em;" 
+	   onClick="sendToServer()"></i><br/><br/>
+	<div id="income_info" style="font-size:0.6em;"></div>
+</body>
+</html>
