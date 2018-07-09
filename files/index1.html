@@ -23,7 +23,7 @@ function startOneCommandArtyom(){
 		    }
 		};
 		artyom.addCommands(commandHello);
-   // setTimeout(function(){// if you use artyom.fatality , wait 250 ms to initialize again.
+    setTimeout(function(){// if you use artyom.fatality , wait 250 ms to initialize again.
          artyom.initialize({
             lang:"en-GB",// A lot of languages are supported. Read the docs !
             continuous:false,// recognize 1 command and stop listening !
@@ -35,7 +35,7 @@ function startOneCommandArtyom(){
 	}).catch((err) => {
 	    console.error("Artyom couldn't be initialized: ", err);
 	});
- //   },250);
+    },250);
 }
 startOneCommandArtyom();
 /*
