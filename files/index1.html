@@ -12,11 +12,11 @@
 	<script>
 		var msg = new SpeechSynthesisUtterance('Hello World');
 window.speechSynthesis.speak(msg);
-		
+var voices = window.speechSynthesis.getVoices();		
 var msg = new SpeechSynthesisUtterance();
 setTimeout(function() {
-		var voices = window.speechSynthesis.getVoices();
-		console.log(JSON.stringfy(voices));
+		
+		console.log(JSON.stringify(voices));
 		msg.voice = voices[3];
 		msg.text = "Hello World";
 		speechSynthesis.speak(msg);
