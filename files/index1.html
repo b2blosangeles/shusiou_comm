@@ -11,18 +11,18 @@
 	<script>
 const artyom = new Artyom();
 // This function activates artyom and will listen and execute only 1 command (for http connections)
-function startOneCommandArtyom(){
+//function startOneCommandArtyom(){
     //artyom.fatality();// use this to stop any of
 		var commandHello = {
-		    indexes:['good'], // These spoken words will trigger the execution of the command
+		    indexes:['good', 'nice'], // These spoken words will trigger the execution of the command
 		    action:function(i,wildcard){ // Action to be executed when a index match with spoken word
 			    console.log(i);
 			    console.log(wildcard);
 			    console.log('Hey buddy ! How are you today?');
-			artyom.say("Hey buddy ! How are you today?");
+			//artyom.say("Hey buddy ! How are you today?");
 		    }
 		};
-		artyom.addCommands([commandHello]);
+		artyom.addCommands(commandHello);
    // setTimeout(function(){// if you use artyom.fatality , wait 250 ms to initialize again.
          artyom.initialize({
             lang:"en-GB",// A lot of languages are supported. Read the docs !
@@ -37,7 +37,7 @@ function startOneCommandArtyom(){
 	});
  //   },250);
 }
-startOneCommandArtyom();
+//startOneCommandArtyom();
 /*
 //artyom.fatality();
 var commandHello = {
