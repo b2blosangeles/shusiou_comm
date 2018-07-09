@@ -31,11 +31,10 @@ function startOneCommandArtyom(){
             debug:true, // Show everything in the console
             speed:1 // talk normally
         }).then(function(){
-		 
-		 
-		 
-            console.log("Ready to work B !");
-        });
+		    console.log("Ready to work B !");
+	}).catch((err) => {
+	    console.error("Artyom couldn't be initialized: ", err);
+	});
  //   },250);
 }
 startOneCommandArtyom();
