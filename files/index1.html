@@ -11,7 +11,7 @@
 	<script>
 const artyom = new Artyom();
 // This function activates artyom and will listen and execute only 1 command (for http connections)
-//function startOneCommandArtyom(){
+function startOneCommandArtyom(){
     //artyom.fatality();// use this to stop any of
 		var commandHello = {
 		    indexes:['good', 'nice'], // These spoken words will trigger the execution of the command
@@ -36,8 +36,8 @@ const artyom = new Artyom();
 	    console.error("Artyom couldn't be initialized: ", err);
 	});
  //   },250);
-//}
-//startOneCommandArtyom();
+}
+startOneCommandArtyom();
 /*
 //artyom.fatality();
 var commandHello = {
