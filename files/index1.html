@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>加密语言通信-3</title>
+    <title>加密语言通信-1</title>
 	<meta charset="utf-8" />
 	
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -10,7 +10,19 @@
 	<script src="/js/artyom/artyom.window.min.js"></script>
 	<script>
 		const artyom = new Artyom();
+artyom.say("Good morning, i'm hungry. Do you want to eat something?",{
+    onStart:function(){
+        console.log("The text is being readed");
+    },
+    onEnd:function(){
+        console.log("Well, that was all. Try with a longer text !");
+    }
+});
 
+artyom.say("Now i'll say this");
+
+artyom.say("And this after the previous spoken text.");
+		/*
 		// Add a single command
 		var commandHello = {
 		    indexes:["hello","good morning","hey"], // These spoken words will trigger the execution of the command
@@ -19,7 +31,8 @@
 		    }
 		};
 
-		artyom.addCommands(commandHello);		
+		artyom.addCommands(commandHello);	
+		*/
 	</script>	
 	<style>
 		.status_on { color:darkgreen }
