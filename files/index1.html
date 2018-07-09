@@ -10,6 +10,9 @@
 	<script src="/js/artyom/artyom.window.min.js"></script>
 	<!--script src="/js/artyom/artyom.js"></script-->
 	<script>
+		var msg = new SpeechSynthesisUtterance('Hello World');
+window.speechSynthesis.speak(msg);
+	/*	
 const artyom = new Artyom();
 		
 let voices = artyom.getVoices();
@@ -52,6 +55,7 @@ function startOneCommandArtyom(){
     },250);
 }
 startOneCommandArtyom();
+*/
 /*
 //artyom.fatality();
 var commandHello = {
@@ -104,6 +108,7 @@ var myGroup = [
 // artyom.addCommands(myGroup); 		
 		
 	//	const artyom = new Artyom();
+		/*
 artyom.ArtyomVoicesIdentifiers["en-GB"] = ["en-GB-Standard-A", "en-US", "en_GB"];
 artyom.say("Good morning, i'm hungry. Do you want to eat something?",{
     onStart:function(){
@@ -119,7 +124,7 @@ artyom.say("Good morning, i'm hungry. Do you want to eat something?",{
 artyom.say("Now i'll say this");
 
 artyom.say("And this after the previous spoken text.");
-
+*/
 		/*
 		// Add a single command
 		var commandHello = {
