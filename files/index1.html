@@ -20,8 +20,6 @@ function startOneCommandArtyom(){
             lang:"en-GB",// A lot of languages are supported. Read the docs !
             continuous:false,// recognize 1 command and stop listening !
             listen:true, // Start recognizing
-		 name: "Google UK English Female",
-            voiceURI: "Google UK English Female",
             debug:true, // Show everything in the console
             speed:1 // talk normally
         }).then(function(){
@@ -94,7 +92,7 @@ var myGroup = [
 // artyom.addCommands(myGroup); 		
 		
 	//	const artyom = new Artyom();
-artyom.ArtyomVoicesIdentifiers["en-GB"] = ["Google UK English Female", "Google UK English Male", "en-GB", "en_GB"];
+artyom.ArtyomVoicesIdentifiers["en-GB"] = ["Google US English Female", "en-US", "en_GB"];
 artyom.say("Good morning, i'm hungry. Do you want to eat something?",{
     onStart:function(){
         console.log("The text is being readed");
