@@ -11,16 +11,16 @@
 	<!--script src="/js/artyom/artyom.js"></script-->
 	<script>
 		var msg = new SpeechSynthesisUtterance('Hello World');
-window.speechSynthesis.speak(msg);
+window.speechSynthesis.speak('');
 		
 var msg = new SpeechSynthesisUtterance();
 setTimeout(function() {
 		var voices = window.speechSynthesis.getVoices();
 		console.log(voices);
-		msg.voice = voices[49];
+		msg.voice = voices[10];
 		msg.text = "Hello World";
 		speechSynthesis.speak(msg);
-}, 3000)
+}, 1000)
 		
 		
 	/*	
