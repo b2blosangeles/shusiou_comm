@@ -22,8 +22,8 @@ function startOneCommandArtyom(){
 			artyom.say("Hey buddy ! How are you today?");
 		    }
 		};
-		artyom.addCommands(commandHello);
-    setTimeout(function(){// if you use artyom.fatality , wait 250 ms to initialize again.
+		artyom.addCommands([commandHello]);
+   // setTimeout(function(){// if you use artyom.fatality , wait 250 ms to initialize again.
          artyom.initialize({
             lang:"en-GB",// A lot of languages are supported. Read the docs !
             continuous:false,// recognize 1 command and stop listening !
@@ -34,9 +34,9 @@ function startOneCommandArtyom(){
 		 
 		 
 		 
-            console.log("Ready to work A !");
+            console.log("Ready to work B !");
         });
-    },250);
+ //   },250);
 }
 startOneCommandArtyom();
 /*
