@@ -11,6 +11,18 @@
 	<!--script src="/js/artyom/artyom.js"></script-->
 	<script>
 const artyom = new Artyom();
+		
+let voices = artyom.getVoices();
+console.log('===voices===>');
+console.log(voices);
+voices.forEach((voice) => {
+    console.log({
+        voiceURI: voice.voiceURI,
+        name: voice.name,
+        lang: voice.lang
+    });
+});
+		
 // This function activates artyom and will listen and execute only 1 command (for http connections)
 function startOneCommandArtyom(){
     artyom.fatality();// use this to stop any of
@@ -101,16 +113,7 @@ artyom.say("Good morning, i'm hungry. Do you want to eat something?",{
         console.log("Well, that was all. Try with a longer text !");
     }
 });
-let voices = artyom.getVoices();
-console.log('===voices===>');
-console.log(voices);
-voices.forEach((voice) => {
-    console.log({
-        voiceURI: voice.voiceURI,
-        name: voice.name,
-        lang: voice.lang
-    });
-});
+
 
 
 artyom.say("Now i'll say this");
