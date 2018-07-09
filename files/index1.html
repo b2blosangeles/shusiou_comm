@@ -10,18 +10,23 @@
 	<script src="/js/artyom/artyom.window.min.js"></script>
 	<script>
 const artyom = new Artyom();
-		    if (window.hasOwnProperty('speechSynthesis')) {
-        speechSynthesis.getVoices();
-    } else {
-        console.error('this browser does not support speechSyntesis');
-    }
+// This function activates artyom and will listen and execute only 1 command (for http connections)
+function startOneCommandArtyom(){
+    artyom.fatality();// use this to stop any of
 
-    if (window.hasOwnProperty('webkitSpeechRecognition')) {
-        var reconocimiento = new webkitSpeechRecognition();
-    } else {
-        console.error('this browser does not support webkitSpeechRecognition');
-    }
-
+    setTimeout(function(){// if you use artyom.fatality , wait 250 ms to initialize again.
+         artyom.initialize({
+            lang:"en-GB",// A lot of languages are supported. Read the docs !
+            continuous:false,// recognize 1 command and stop listening !
+            listen:true, // Start recognizing
+            debug:true, // Show everything in the console
+            speed:1 // talk normally
+        }).then(function(){
+            console.log("Ready to work !");
+        });
+    },250);
+}
+/*
 //artyom.fatality();
 var commandHello = {
     indexes:["hello","good morning","hey"], // These spoken words will trigger the execution of the command
@@ -30,7 +35,7 @@ var commandHello = {
     }
 };
 artyom.addCommands(commandHello);
-/*
+
 // Or add multiple commands at time
 var myGroup = [
     {
