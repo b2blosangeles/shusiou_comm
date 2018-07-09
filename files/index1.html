@@ -22,7 +22,16 @@ function startOneCommandArtyom(){
             debug:true, // Show everything in the console
             speed:1 // talk normally
         }).then(function(){
-            console.log("Ready to work !");
+		 
+		var commandHello = {
+		    indexes:["hello","good morning","hey"], // These spoken words will trigger the execution of the command
+		    action:function(){ // Action to be executed when a index match with spoken word
+			artyom.say("Hey buddy ! How are you today?");
+		    }
+		};
+		artyom.addCommands(commandHello);		 
+		 
+            console.log("Ready to work A !");
         });
     },250);
 }
