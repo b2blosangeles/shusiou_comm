@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>加密语言通信-6</title>
+    <title>加密语言通信-1</title>
 	<meta charset="utf-8" />
 	
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -11,21 +11,13 @@
 	<script>
 const artyom = new Artyom();
 
-/**
- * Add a command that reacts to "Hello"
- */
-artyom.addCommands([
-    {
-        indexes:["Hello"],
-        action:function(){
-            alert("Hey, how are you");
-        }
+var commandHello = {
+    indexes:["hello","good morning","hey"], // These spoken words will trigger the execution of the command
+    action:function(){ // Action to be executed when a index match with spoken word
+        artyom.say("Hey buddy ! How are you today?");
     }
-]);
-
-
-artyom.simulateInstruction("Hello"); //Simulate a voice  command with voice "hello".
-
+};
+artyom.addCommands(commandHello);
 /*
 // Or add multiple commands at time
 var myGroup = [
