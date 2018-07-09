@@ -10,7 +10,21 @@
 	<script src="/js/artyom/artyom.window.min.js"></script>
 	<script>
 const artyom = new Artyom();
-artyom.fatality();
+		    if (window.hasOwnProperty('speechSynthesis')) {
+        speechSynthesis.getVoices();
+    } else {
+        console.error('this browser does not support speechSyntesis');
+        return false;
+    }
+
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+        var reconocimiento = new webkitSpeechRecognition();
+    } else {
+        console.error('this browser does not support webkitSpeechRecognition');
+        return false;
+    }
+
+//artyom.fatality();
 var commandHello = {
     indexes:["hello","good morning","hey"], // These spoken words will trigger the execution of the command
     action:function(){ // Action to be executed when a index match with spoken word
