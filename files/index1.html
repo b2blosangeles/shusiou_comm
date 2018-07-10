@@ -10,7 +10,7 @@
 	<script src="/js/artyom/artyom.window.min.js"></script>
 	<!--script src="/js/artyom/artyom.js"></script-->
 	<script>
-		
+	/*	
 		var msg = new SpeechSynthesisUtterance('');
 window.speechSynthesis.speak(msg);
 		
@@ -22,9 +22,9 @@ setTimeout(function() {
 		msg.text = "how are you?";
 		speechSynthesis.speak(msg);
 }, 3000)
+	*/	
 		
 		
-/*		
 const artyom = new Artyom();
 var vlist = [];
 setTimeout(
@@ -42,7 +42,7 @@ setTimeout(
 		// artyom.ArtyomVoicesIdentifiers["en-GB"] = vlist[11];
 		artyom.ArtyomVoicesIdentifiers["en-GB"] = ['Victoria']
 		console.log('===vlist[48]===>');
-		console.log(vlist[48]);
+		console.log(vlist[0]);
 		artyom.say("Good morning, i'm hungry. Do you want to eat something?",{
 		    onStart:function(){
 			console.log("The text is being readed");
@@ -54,7 +54,7 @@ setTimeout(
 	}, 3000
 
 );		
-*/
+
 /*		
 // This function activates artyom and will listen and execute only 1 command (for http connections)
 function startOneCommandArtyom(){
