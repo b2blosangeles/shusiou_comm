@@ -10,6 +10,7 @@
 	<script src="/js/artyom/artyom.window.min.js"></script>
 	<!--script src="/js/artyom/artyom.js"></script-->
 	<script>
+		/*
 		var msg = new SpeechSynthesisUtterance('');
 window.speechSynthesis.speak(msg);
 		
@@ -21,22 +22,27 @@ setTimeout(function() {
 		msg.text = "how are you?";
 		speechSynthesis.speak(msg);
 }, 500)
+		*/
 		
 		
-	/*	
 const artyom = new Artyom();
-		
-let voices = artyom.getVoices();
-console.log('===voices===>');
-console.log(voices);
-voices.forEach((voice) => {
-    console.log({
-        voiceURI: voice.voiceURI,
-        name: voice.name,
-        lang: voice.lang
-    });
-});
-		
+setTimeout(
+	function() {
+		let voices = artyom.getVoices();
+		console.log('===voices===>');
+		console.log(voices);
+		voices.forEach((voice) => {
+		    console.log({
+			voiceURI: voice.voiceURI,
+			name: voice.name,
+			lang: voice.lang
+		    });
+		});	
+	}, 3000
+
+);		
+
+/*		
 // This function activates artyom and will listen and execute only 1 command (for http connections)
 function startOneCommandArtyom(){
     artyom.fatality();// use this to stop any of
