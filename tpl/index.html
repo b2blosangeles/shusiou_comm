@@ -30,6 +30,7 @@
 	<script src="/js/qna.js"></script>
 	<script>	
 		let qna = new _QNA_();
+		
 		qna.init({ 
 			master_socket_id: '{$socket}', 
 			link : 'https://comm1.service.dev.shusiou.win/', 
@@ -92,7 +93,7 @@
 			qna.sendToServer({clientMessage: null});
 		}
 		function sendToServer() {
-			qna.sendToServer({clientMessage: {cmd: 'pingbo'}});
+			qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:'niu bi'}});
 			console.log('--==sendToServer==--');
 		}		
 	</script>
