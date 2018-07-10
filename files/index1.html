@@ -10,6 +10,16 @@
 	<script src="/js/artyom/artyom.window.min.js"></script>
 	<!--script src="/js/artyom/artyom.js"></script-->
 	<script>
+var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+console.log('---recognition--->');
+recognition.lang = 'en-US';
+recognition.interimResults = false;
+recognition.maxAlternatives = 5;
+recognition.start();
+
+recognition.onresult = function(event) {
+    console.log('You said: ', event.results[0][0].transcript);
+};
 	/*	
 		var msg = new SpeechSynthesisUtterance('');
 window.speechSynthesis.speak(msg);
