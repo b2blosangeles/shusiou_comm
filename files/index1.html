@@ -17,7 +17,7 @@ var msg = new SpeechSynthesisUtterance();
 setTimeout(function() {
 		var voices = window.speechSynthesis.getVoices();
 		console.log(voices);
-		msg.voice = voices[63];
+		msg.voice = voices[40];
 		msg.text = "您好";
 		speechSynthesis.speak(msg);
 }, 500)
