@@ -18,10 +18,10 @@ var msg = new SpeechSynthesisUtterance();
 setTimeout(function() {
 		var voices = window.speechSynthesis.getVoices();
 		console.log(voices);
-		msg.voice = voices[40];
+		msg.voice = voices[0];
 		msg.text = "how are you?";
 		speechSynthesis.speak(msg);
-}, 500)
+}, 3000)
 		
 		
 /*		
