@@ -14,7 +14,7 @@ var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognitio
 console.log('---recognition--->>');
 recognition.lang = 'en-US';
 recognition.interimResults = false;
-recognition.maxAlternatives = 5;
+recognition.maxAlternatives = 15;
 recognition.start();
 
 recognition.onresult = function(event) {
