@@ -26,18 +26,28 @@ setTimeout(function() {
 		
 		
 const artyom = new Artyom();
+var vlist = [];
 setTimeout(
 	function() {
 		let voices = artyom.getVoices();
 		console.log('===voices===>');
 		console.log(voices);
 		voices.forEach((voice) => {
-		    console.log({
+		    vlist.push({
 			voiceURI: voice.voiceURI,
 			name: voice.name,
 			lang: voice.lang
 		    });
-		});	
+		});
+		artyom.ArtyomVoicesIdentifiers["en-GB"] = vlist[32];
+		artyom.say("Good morning, i'm hungry. Do you want to eat something?",{
+		    onStart:function(){
+			console.log("The text is being readed");
+		    },
+		    onEnd:function(){
+			console.log("Well, that was all. Try with a longer text !");
+		    }
+		});		
 	}, 3000
 
 );		
