@@ -39,7 +39,9 @@ setTimeout(
 			lang: voice.lang
 		    });
 		});
-		artyom.ArtyomVoicesIdentifiers["en-GB"] = vlist[11];
+		// artyom.ArtyomVoicesIdentifiers["en-GB"] = vlist[11];
+		artyom.ArtyomVoicesIdentifiers["en-GB"] = [vlist[11].name]
+		console.log('--vlist[48]-->');
 		console.log(vlist[48]);
 		artyom.say("Good morning, i'm hungry. Do you want to eat something?",{
 		    onStart:function(){
