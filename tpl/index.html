@@ -31,11 +31,6 @@
 					'nice': function() {
 						document.getElementById('income_info').innerHTML =  'nice';
 						qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:'nice'}});
-						// annyang.pause();
-						//annyang.abort();
-						// annyang.resume();
-						//$('.fa-microphone')
-						//	.removeClass('status_on').addClass('status_off');
 					}
 				};						
 				annyang.addCommands(commands);
@@ -72,7 +67,7 @@
 		function onUnload() {
 			qna.sendToServer({clientMessage: null});
 		}
-		function sendToServer() {
+		function sendTestToServer() {
 			qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:{niu:'niu bi', who:'who', tm:new Date().getTime()}}});
 		}		
 	</script>
@@ -85,7 +80,7 @@
 <body style="text-align:center"  onunload="onUnload()">
 	加密语言通信<br/><br/>
 	<i class="fa fa-microphone status_off" aria-hidden="true" style="font-size:5em;" 
-	   onClick="sendToServer()"></i><br/><br/>
+	   onClick="sendTestToServer()"></i><br/><br/>
 	<div id="income_info" style="font-size:0.6em;"></div>
 </body>
 </html>
