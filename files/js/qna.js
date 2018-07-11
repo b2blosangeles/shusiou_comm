@@ -87,7 +87,6 @@
 		};		
 		this.auditClient = function() {
 			let me = this;
-			console.log('==pp server===');
 			for (var k in me.ping_id) {
 				if ((new Date().getTime() - k) > me.timeOut) {
 					me.socket.close();
