@@ -8,25 +8,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script>
-		/*
-	if (annyang) {
-	  // Let's define our first command. First the text we expect, and then the function it should call
-	  
-	var commands = {
-	    'good': function() {
-	      alert('good job');
-	    }
-	  };
-
-	  // Add our commands to annyang
-	  annyang.addCommands(commands);
-
-	  // Start listening. You can call this here, or attach this call to an event, button, etc.
-	//  annyang.start();
-	}
-	*/
-	</script>
 	<script src="/js/qna.js"></script>
 	<script>	
 		let qna = new _QNA_();
@@ -66,7 +47,7 @@
 				$('#income_info').html('ready');
 			}, 			
 			onClientData : function(incomeData, socket) {
-				console.log(incomeData.data.cmd);
+				//console.log(incomeData.data.cmd);
 				qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
 				/*
 				switch (incomeData.data.cmd) {
