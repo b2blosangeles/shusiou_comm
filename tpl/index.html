@@ -75,7 +75,7 @@
 			qna.sendToServer({clientMessage: null});
 		}
 		function sendToServer() {
-			qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:{niu:'niu bi', who:'who'}}});
+			qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:{niu:'niu bi', who:'who', tm:new Date().getTime()}}});
 			console.log('--==sendToServer==--');
 		}		
 	</script>
