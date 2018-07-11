@@ -64,7 +64,7 @@
 						me.incomeClient(incomeData);
 					} 
 				});
-				/*
+				
 				if (me.cfg.master_socket_id) { 
 					setInterval(function() {
 						let ping_id = new Date().getTime();
@@ -72,13 +72,13 @@
 						me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
 						data: {_sender: me.socket.id, _code : '_sessionRequest', ping_id: ping_id}});
 						me.auditClient();
-					}, 1000);
+					}, 2000);
 				} else {
 					setInterval(function() {
 						me.auditServerClients();
 					}, 500);				
 				}
-				*/
+				
 			});			
 		};
 		this.closeSocket = function() {
