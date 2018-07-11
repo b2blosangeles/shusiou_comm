@@ -64,6 +64,7 @@
 						me.incomeClient(incomeData);
 					} 
 				});
+				/*
 				if (me.cfg.master_socket_id) { 
 					setInterval(function() {
 						let ping_id = new Date().getTime();
@@ -77,6 +78,7 @@
 						me.auditServerClients();
 					}, 500);				
 				}
+				*/
 			});			
 		};
 		this.closeSocket = function() {
