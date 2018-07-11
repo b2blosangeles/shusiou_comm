@@ -21,8 +21,7 @@
 				var commands = {
 					'good': function() {
 						document.getElementById('income_info').innerHTML =  'good';
-						qna.sendToServer({clientMessage: 
-								  {cmd: 'pingbo', data: 'good'}});
+						qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:'good'}});
 						// annyang.pause();
 						//annyang.abort();
 						// annyang.resume();
