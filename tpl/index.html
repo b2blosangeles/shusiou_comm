@@ -15,7 +15,8 @@
 			var commands = {};
 			commands[cmd] = function() {
 				document.getElementById('income_info').innerHTML =  cmd;
-				qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:cmd}});
+				qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:{
+					cmd:cmd, tm:new Date().getTime()}}});
 			};						
 			annyang.addCommands(commands);
 			annyang.setLanguage('en-US');
