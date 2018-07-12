@@ -40,25 +40,22 @@
 				$('#income_info').html('ready');
 			}, 			
 			onClientData : function(incomeData, socket) {
-				console.log(incomeData.data.cmd);
-				qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
-				/*
 				switch (incomeData.data.cmd) {
 					case 'pingbo' :
-						$('#income_info').html(new Date().getTime() + ' coming');
+						qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
 						break;
-					case 'start' :	
-						$('.fa-microphone').removeClass('status_off').addClass('status_on');
-						$('#income_info').html('');
+					case 'sendToClient' :	
+						alert(JSON.stringify(incomeData.data));
 						break;
+					/*	
 					case 'stop' :
 						annyang.abort();
 						$('.fa-microphone').removeClass('status_on').addClass('status_off');
 						document.getElementById('income_info').innerHTML =  'stopped';
-						break						
+						break	
+					*/
 					default:	
 				}
-				*/
 			},
 			afterTimeout : function() {
 				window.close();
