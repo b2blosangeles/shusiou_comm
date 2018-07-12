@@ -37,7 +37,7 @@
 						break;
 					case 'serverPush' :	
 						document.getElementById('income_info').innerHTML = 
-							JSON.stringify(incomeData.data.data);
+							incomeData.data.data;
 						setup_annyang(incomeData.data.data);
 						break;
 					/*	
