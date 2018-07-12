@@ -44,7 +44,7 @@
 					case 'pingbo' :
 						qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
 						break;
-					case 'sendFromServer' :	
+					case 'serverPush' :	
 						document.getElementById('income_info').innerHTML = 
 							JSON.stringify(incomeData.data);
 						break;
