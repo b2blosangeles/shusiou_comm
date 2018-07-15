@@ -11,16 +11,16 @@
 	<script src="/js/qna.js"></script>
 	<script>	
 		let qna = new _QNA_();
-		let setup_annyang = function(cmds) {
+		let setup_annyang = function(cmd) {
 			var commands = {};
-			for (var i=0, i < cmds.length; i++) {
-				let cmd = cmds[i];
+			//for (var i=0, i < cmds.length; i++) {
+			//	let cmd = cmds[i];
 				commands[cmd] = function() {
 					document.getElementById('income_info').innerHTML =  cmd;
 					qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:{
 						cmd:cmd, tm:new Date().getTime()}}});
 				};
-			}
+			//}
 			annyang.addCommands(commands);
 			annyang.setLanguage('en-US');
 			// annyang.start({ autoRestart: true});
