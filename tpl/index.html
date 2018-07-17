@@ -21,6 +21,16 @@
 						cmd:cmd, tm:new Date().getTime()}}});
 				};
 			}
+			annyang.addCallback('error', function() {
+				console.log('There was an error!');
+			});
+
+			annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
+				console.log(userSaid); // sample output: 'hello'
+				console.log(commandText); // sample output: 'hello (there)'
+				console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
+			});
+
 			annyang.addCommands(commands);
 			annyang.setLanguage('en-US');
 			// annyang.start({ autoRestart: true});
