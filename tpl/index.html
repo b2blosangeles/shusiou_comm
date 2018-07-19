@@ -24,9 +24,16 @@
 			}
 			annyang.addCallback('error', function(err) {
 				console.log(err);
-				console.log('--annyang.isListening()-->');
+				
 				annyang.abort();
-				console.log(annyang.isListening());
+				setTimeout(
+					function() {
+						console.log('--annyang.isListening()-->');
+						console.log(annyang.isListening());
+					}, 2000
+				
+				);
+				
 				qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:{err:err, 
 					tm:new Date().getTime()}}});
 			});
