@@ -16,6 +16,7 @@
 			for (var i=0; i < cmds.length; i++) {
 				let cmd = cmds[i];
 				commands[cmd] = function() {
+					console.log('===AAA==='); 
 					document.getElementById('income_info').innerHTML =  cmd;
 					qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:{
 						cmd:cmd, tm:new Date().getTime()}}});
@@ -28,6 +29,7 @@
 			});
 
 			annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
+				console.log('===BBB==='); 
 				console.log(userSaid); // sample output: 'hello'
 				console.log(commandText); // sample output: 'hello (there)'
 				console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
