@@ -21,7 +21,8 @@
 						cmd:cmd, tm:new Date().getTime()}}});
 				};
 			}
-			annyang.addCallback('error', function() {
+			annyang.addCallback('error', function(err) {
+				console.log(err);
 				console.log('There was an error!');
 			});
 
