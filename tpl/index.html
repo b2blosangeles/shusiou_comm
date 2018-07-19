@@ -29,7 +29,7 @@
 			annyang.addCallback('error', function(err) {
 				console.log(err);
 				
-				annyang.pause(function() {});
+				annyang.abort(function() {});
 				setTimeout(
 					function() {
 						console.log('--annyang.isListening()-->');
