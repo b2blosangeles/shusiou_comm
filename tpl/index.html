@@ -44,6 +44,7 @@
 			proxy: ['http://comm1.service.dev.shusiou.win/', 'https://comm1.service.dev.shusiou.win/'],
 			onConnect : function(socket) {
 				qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
+				setup_annyang(['good', 'nice']);
 				$('.fa-microphone').removeClass('status_off').addClass('status_on');
 				$('#income_info').html('ready');
 			}, 			
