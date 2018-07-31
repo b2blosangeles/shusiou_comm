@@ -89,12 +89,18 @@
 				window.close();
 			}
 		});
+		
+		
+		
+		
 		function onUnload() {
 			qna.sendToServer({clientMessage: null});
 		}
-		function sendTestToServer() {
-			qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:{niu:'niu bi', who:'who', tm:new Date().getTime()}}});
-		}		
+		function sendReleaseToServer() {
+			qna.sendToServer({clientMessage: {cmd: 'pingbo', 
+				commData:{cmd:'release'}}});
+		}	
+		
 	</script>
 	<style>
 		.status_on { color:darkgreen }
@@ -105,7 +111,7 @@
 <body style="text-align:center"  onunload="onUnload()">
 	加密语言通信<br/><br/>
 	<i class="fa fa-microphone status_off" aria-hidden="true" style="font-size:5em;" 
-	   onClick="sendTestToServer()"></i><br/><br/>
+	   onClick="sendReleaseToServer()"></i><br/><br/>
 	<div id="income_info" style="font-size:0.6em;"></div>
 </body>
 </html>
