@@ -65,7 +65,7 @@
 				$('#income_info').html('ready');
 			}, 			
 			onClientData : function(incomeData, socket) {
-				console.log(incomeData);
+				
 				switch (incomeData.data.cmd) {
 					case 'pingbo' :
 						console.log('888pingbo888');
@@ -74,6 +74,7 @@
 					case 'voicerecong' :	
 						document.getElementById('income_info').innerHTML = 
 							incomeData.data.data;
+						console.log(incomeData);
 						console.log('==niuniu===');
 						setup_annyang(incomeData.data.data);
 						break;
