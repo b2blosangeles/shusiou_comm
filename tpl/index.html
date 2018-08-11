@@ -64,7 +64,7 @@
 				setup_annyang(['good', 'nice']);
 				$('.fa-microphone').removeClass('status_off').addClass('status_on');
 				$('#income_info').html('ready');
-				qna.sendToServer({clientMessage: {cmd: 'ppp', commData:{err:err, 
+				qna.sendToServer({clientMessage: {cmd: 'ppp', commData:{err:'err', 
 					tm:new Date().getTime()}}});
 			}, 			
 			onClientData : function(incomeData, socket) {
