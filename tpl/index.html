@@ -65,6 +65,7 @@
 				$('#income_info').html('ready');
 			}, 			
 			onClientData : function(incomeData, socket) {
+				console.log(incomeData);
 				switch (incomeData.data.cmd) {
 					case 'pingbo' :
 						qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
