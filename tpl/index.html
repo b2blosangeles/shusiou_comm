@@ -72,9 +72,8 @@
 						break;
 					case 'voicerecong' :	
 						document.getElementById('income_info').innerHTML = 
-							incomeData.data.data;
+							JSON.stringify(incomeData);
 						console.log(incomeData);
-						alert('==niuniu===');
 						//setup_annyang(incomeData.data.data);
 						break;
 					/*	
