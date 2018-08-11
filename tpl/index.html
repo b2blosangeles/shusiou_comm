@@ -68,7 +68,6 @@
 				
 				switch (incomeData.data.cmd) {
 					case 'pingbo' :
-						console.log('888pingbo888');
 						qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
 						break;
 					case 'voicerecong' :	
