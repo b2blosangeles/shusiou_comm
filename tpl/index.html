@@ -69,7 +69,7 @@
 					case 'pingbo' :
 						qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
 						break;
-					case 'serverPush' :	
+					case 'voiceRecong' :	
 						document.getElementById('income_info').innerHTML = 
 							incomeData.data.data;
 						setup_annyang(incomeData.data.data);
