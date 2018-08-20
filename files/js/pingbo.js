@@ -1,22 +1,19 @@
 (function () { 
 	var obj =  function () {		
-
+		this.q = {};
 		this.sendToRoom = function(room, data) {
 			let me = this;
-			me.socket.emit('createRoom', room);
-			/*
-			me.socket.join(room, function() {
-				io.to(data._room).emit('clientData', data);
-				io.in(room).clients((err, clients) => {
-					me.io.to(room).emit('serverMessage', 
-					 { message: socket.id + ' ---> has joined room ' + room + 
-					  '. Total ' + clients.length + ' clients :' + clients.join(',') });
-				});
-			});
-			*/
-		}		
+			me.socket.emit('clientRequest', { cmd: 'createRoom', room: room, data:data});
+		}
+		this.sendToSocketId = function(socket_id, data) {
+			let me = this;
+			me.socket.emit('clientRequest', { cmd: 'sendToSocket', socket_id: socket_id, data:data});
+		}
+
 		this.init = function(cfg) {
 			let me = this;
+			console.log('----me.name--->');
+			console.log(me.name);
 			me.cfg = cfg;
 			me.timeOut = ((me.cfg.timeOut) && (me.cfg.timeOut > 1999)) ? me.cfg.timeOut : 2000;
 			
@@ -36,8 +33,11 @@
 					console.log(incomeData);
 				});
 				me.socket.on('serverMessage', function(incomeData) {
-					console.log('---serverMessage--->');
-					console.log(incomeData);
+					if (incomeData._id) {
+						delete me.q['id']
+					}
+					
+
 				});				
 				
 			});			
