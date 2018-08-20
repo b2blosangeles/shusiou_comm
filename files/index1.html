@@ -92,7 +92,7 @@
 		setTimeout(
 			function() {
 				console.log(qna1.socket.id);
-				qna1.socket.emit('clientData', {niu:1});
+				qna1.sendToRoom('niu', {niu:1});
 				console.log(qna.socket.id);
 			}, 3000
 		);
