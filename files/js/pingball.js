@@ -26,19 +26,13 @@
 			let me = this;
 			me.socket.close();
 		};
-		this.audit = function(me) {
-			//let me = this;
-			console.log(me.q);
-			for (var o in me.q) {
-				console.log('==> ' + o + ':');
-				if (new Date().getTime() -  me.q[o].tm > me.timeOut) {
+		this.audit = function(ta) {
+			for (var o in ta.q) {
+				if (new Date().getTime() -  ta.q[o].tm > me.timeOut) {
 					console.log('Timeout ' + o + ':');
-					console.log(me.q[o]);
-					// delete(me.q[o]);
-				} else {
-					console.log('==> ' + o + ':');
-					console.log(me.q[o]);			
-				}
+					console.log(ta.q[o]);
+					delete(ta.q[o]);
+				} 
 			}
 		}
 		this.init = function(cfg) {
