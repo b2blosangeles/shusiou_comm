@@ -93,9 +93,9 @@
 			function() {
 				console.log(p1.socket.id);
 				console.log('--- *1** ---' );
-				qna1.sendToRoom('niu', {niu:1});
+				p1.sendToRoom('niu', {niu:1});
 				console.log('--- *0** ---' );
-				qna.sendToRoom('niu', {niu:1});
+				p.sendToRoom('niu', {niu:1});
 				console.log(p.socket.id);
 			}, 2000
 		);
