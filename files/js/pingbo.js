@@ -43,8 +43,6 @@
 		}		
 		this.init = function(cfg) {
 			let me = this;
-			me.ping_id = {};
-			me.clients = {};
 			me.cfg = cfg;
 			me.timeOut = ((me.cfg.timeOut) && (me.cfg.timeOut > 1999)) ? me.cfg.timeOut : 2000;
 			
@@ -53,6 +51,7 @@
 				if (typeof cfg.onConnect === 'function') {
 					cfg.onConnect(me.socket);
 				}
+				/*
 				me.socket.on('serverData', function(incomeData) {
 					if (incomeData.data._code === '_sessionRequest') {
 						me.sessionService(incomeData);
@@ -64,45 +63,12 @@
 						me.incomeClient(incomeData);
 					} 
 				});
-				
-				if (me.cfg.master_socket_id) { 
-					setInterval(function() {
-						let ping_id = new Date().getTime();
-						me.ping_id[ping_id] = 1;
-						me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
-						data: {_sender: me.socket.id, _code : '_sessionRequest', ping_id: ping_id}});
-						me.auditClient();
-					}, 1000);
-				} else {
-					setInterval(function() {
-						me.auditServerClients();
-					}, 500);				
-				}
-				
+				*/
 			});			
 		};
 		this.closeSocket = function() {
 			let me = this;
 			me.socket.close();
-		};		
-		this.auditClient = function() {
-			let me = this;
-			for (var k in me.ping_id) {
-				if ((new Date().getTime() - k) > me.timeOut) {
-					me.socket.close();
-					if (typeof me.cfg.afterTimeout === 'function') {
-						me.cfg.afterTimeout();
-					}
-				}
-			};
-		};
-		this.auditServerClients = function() {
-			let me = this;
-			for (var k in me.clients) {
-				if ((new Date().getTime() - me.clients[k]) > me.timeOut) {
-					delete me.clients[k];
-				}
-			};
 		};		
 	};
 	window._QNA_ = obj;
