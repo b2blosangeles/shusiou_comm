@@ -1,14 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>加密语言通信-2</title>
+    <title>加密语言通信 {($room)?$room:''}</title>
 	<meta charset="utf-8" />
 	
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script src="/js/artyom/artyom.window.min.js"></script>
-	<!--script src="/js/artyom/artyom.js"></script-->	
+	<script src="/js/qna.js"></script>
+	<script>	
+		let qna = new _QNA_();
+		let setup_annyang = function(cmds) {
+			var commands = {};
+			for (var i=0; i < cmds.length; i++) {
+				let cmd = cmds[i];
+				commands[cmd] = function() {
+					document.getElementById('income_info').innerHTML =  cmd;
+					qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:{
+						cmd:cmd, tm:new Date().getTime()}}});
+				};
+			}
+			annyang.addCallback('end', function() {
+				console.log('--annyang.isListening()-CC->');
+				console.log(annyang.isListening());
+			});
+			annyang.addCallback('error', function(err) {
+				console.log(err);
+				
+				annyang.abort(function() {});
+				setTimeout(
+					function() {
+						console.log('--annyang.isListening()-->');
+						console.log(annyang.isListening());
+					}, 2000
+				
+				);
+						console.log('--annyang.isListening()-AA->');
+						console.log(annyang.isListening());				
+				qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:{err:err, 
+					tm:new Date().getTime()}}});
+			});
+
+			annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
+				console.log('===BBB==='); 
+				console.log(userSaid); // sample output: 'hello'
+				console.log(commandText); // sample output: 'hello (there)'
+				console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
+			});
+
+			annyang.addCommands(commands);
+			annyang.setLanguage('en-US');
+			// annyang.start({ autoRestart: true});
+			annyang.start();		
+		}
+		qna.init({ 
+			master_socket_id: '{$socket}', 
+			link : 'https://comm1_dev.shusiou.win/', 
+			proxy: ['http://comm1_dev.shusiou.win/', 'https://comm1_dev.shusiou.win/'],
+			onConnect : function(socket) {
+				qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
+				// setup_annyang(['good', 'nice']);
+				$('.fa-microphone').removeClass('status_off').addClass('status_on');
+				$('#income_info').html('ready');
+			}, 			
+			onClientData : function(incomeData, socket) {
+				
+				switch (incomeData.data.cmd) {
+					case 'pingbo' :
+						qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
+						break;
+					case 'voiceRecong' :	
+						document.getElementById('income_info').innerHTML = 
+							JSON.stringify(incomeData.data.voiceRecong);
+						setup_annyang(incomeData.data.voiceRecong);
+						break;
+					/*	
+					case 'stop' :
+						annyang.abort();
+						$('.fa-microphone').removeClass('status_on').addClass('status_off');
+						document.getElementById('income_info').innerHTML =  'stopped';
+						break	
+					*/
+					default:	
+				}
+			},
+			afterTimeout : function() {
+				window.close();
+			}
+		});
+		
+		
+		
+		
+		function onUnload() {
+			qna.sendToServer({clientMessage: null});
+		}
+		function sendReleaseToServer() {
+			qna.sendToServer({clientMessage: {cmd: 'pingbo', 
+				commData:{cmd:'releaseHold'}}});
+		}	
+		
+	</script>
 	<style>
 		.status_on { color:darkgreen }
 		.status_off { color:darkred }
@@ -18,7 +111,7 @@
 <body style="text-align:center"  onunload="onUnload()">
 	加密语言通信<br/><br/>
 	<i class="fa fa-microphone status_off" aria-hidden="true" style="font-size:5em;" 
-	   onClick="sendToServer()"></i><br/><br/>
+	   onClick="sendReleaseToServer()"></i><br/><br/>
 	<div id="income_info" style="font-size:0.6em;"></div>
 </body>
 </html>
