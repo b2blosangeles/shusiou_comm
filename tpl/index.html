@@ -56,8 +56,8 @@
 		}
 		qna.init({ 
 			master_socket_id: '{$socket}', 
-			link : 'https://comm1.service.dev.shusiou.win/', 
-			proxy: ['http://comm1.service.dev.shusiou.win/', 'https://comm1.service.dev.shusiou.win/'],
+			link : 'https://comm1_dev.shusiou.win/', 
+			proxy: ['http://comm1_dev.shusiou.win/', 'https://comm1_dev.shusiou.win/'],
 			onConnect : function(socket) {
 				qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
 				// setup_annyang(['good', 'nice']);
