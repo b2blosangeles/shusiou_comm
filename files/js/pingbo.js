@@ -18,8 +18,6 @@
 		}
 		this.init = function(cfg) {
 			let me = this;
-			console.log('----me.name--->');
-			console.log(me.name);
 			me.cfg = cfg;
 			me.timeOut = ((me.cfg.timeOut) && (me.cfg.timeOut > 1999)) ? me.cfg.timeOut : 2000;
 			
