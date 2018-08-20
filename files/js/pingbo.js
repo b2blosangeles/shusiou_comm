@@ -23,19 +23,17 @@
 				if (typeof cfg.onConnect === 'function') {
 					cfg.onConnect(me.socket);
 				}
-				/*
-				me.socket.on('serverData', function(incomeData) {
-					if (incomeData.data._code === '_sessionRequest') {
-						me.sessionService(incomeData);
-					} else if (incomeData.data._code === '_ReSessionRequest' && (incomeData.data.ping_id)) {
-						delete me.ping_id[incomeData.data.ping_id];						
-					} else if (incomeData.data._code === '_sendToServer') {
-						me.incomeServer(incomeData);
-					} else {
-						me.incomeClient(incomeData);
-					} 
+			
+				me.socket.on('clientData', function(incomeData) {
+					console.log('---incomeData--->');
+					console.log(incomeData);
 				});
-				*/
+	
+				me.socket.on('serverMessage', function(incomeData) {
+					console.log('---serverMessage--->');
+					console.log(incomeData);
+				});				
+				
 			});			
 		};
 		this.closeSocket = function() {
