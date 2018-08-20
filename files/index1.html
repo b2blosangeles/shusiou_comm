@@ -10,7 +10,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script src="/js/pingbo.js"></script>
 	<script>	
-		let qna = new _QNA_();
+		let qna = new _QNA_(), qna1 = new _QNA_();
 		let setup_annyang = function(cmds) {
 			var commands = {};
 			for (var i=0; i < cmds.length; i++) {
@@ -54,6 +54,15 @@
 			// annyang.start({ autoRestart: true});
 			annyang.start();		
 		}
+		qna.init({ 
+			link : 'https://comm1_dev.shusiou.win/', 
+			proxy: ['http://comm1_dev.shusiou.win/', 'https://comm1_dev.shusiou.win/'],
+			onConnect : function(socket) {
+				console.log('---socket.id-A-->');
+				console.log(socket.id);
+			}
+		});
+			
 		qna.init({ 
 			master_socket_id: '{$socket}', 
 			link : 'https://comm1_dev.shusiou.win/', 
