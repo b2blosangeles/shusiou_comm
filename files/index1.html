@@ -11,6 +11,7 @@
 	<script src="/js/pingbo.js"></script>
 	<script>	
 		let qna = new _QNA_(), qna1 = new _QNA_();
+		/*
 		let setup_annyang = function(cmds) {
 			var commands = {};
 			for (var i=0; i < cmds.length; i++) {
@@ -38,10 +39,10 @@
 				);
 						console.log('--annyang.isListening()-AA->');
 						console.log(annyang.isListening());
-				/*
+				
 				qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:{err:err, 
 					tm:new Date().getTime()}}});
-					*/
+					
 			});
 
 			annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
@@ -56,6 +57,7 @@
 			// annyang.start({ autoRestart: true});
 			annyang.start();		
 		}
+		*/
 		qna1.init({ 
 			master_socket_id: '{$socket}', 
 			link : 'https://comm1_dev.shusiou.win/', 
