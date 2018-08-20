@@ -29,6 +29,7 @@
 		this.audit = function() {
 			let me = this;
 			for (var o in me.q) {
+				console.log('==> ' + o + ':');
 				if (new Date().getTime() -  me.q[o].tm > me.timeOut) {
 					console.log('Timeout ' + o + ':');
 					console.log(me.q[o]);
@@ -57,7 +58,7 @@
 					if ((me.q[incomeData._id]) && typeof me.q[incomeData._id].cbk === 'function') {
 						me.q[incomeData._id].cbk(incomeData);
 					}
-					delete me.q[incomeData._id];
+					// delete me.q[incomeData._id];
 				});
 				me._ITV = setInterval(me.audit, 300);
 			});
