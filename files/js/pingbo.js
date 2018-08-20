@@ -27,11 +27,9 @@
 					cfg.onConnect(me.socket);
 				}
 			
-				me.socket.on('clientData', function(incomeData) {
-					console.log('---incomeData--->');
-					console.log(incomeData);
+				me.socket.on('serverData', function(incomeData) {
+					cfg.onServerData(incomeData);
 				});
-				
 				me.socket.on('clientRequestCBK', function(incomeData) {
 					if ((me.q[incomeData._id]) && typeof me.q[incomeData._id].cbk === 'function') {
 						me.q[incomeData._id].cbk(incomeData);
