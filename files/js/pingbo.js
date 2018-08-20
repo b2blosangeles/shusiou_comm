@@ -47,5 +47,5 @@
 			me.socket.close();
 		};		
 	};
-	window._PINGBO_ = obj;
+	window._PINGBALL_ = obj;
 })();
