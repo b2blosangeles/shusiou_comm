@@ -3,6 +3,7 @@
 
 		this.sendToRoom = function(room, data) {
 			let me = this;
+			
 			me.socket.join(room, function() {
 				io.to(data._room).emit('clientData', data);
 				io.in(room).clients((err, clients) => {
