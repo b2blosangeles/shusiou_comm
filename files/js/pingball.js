@@ -1,6 +1,7 @@
 (function () { 
 	var obj =  function (_code) {		
 		this.q = {}, this._cnt = 0, this._id = ((_code) ? (_code + '_') : 'id_');
+		
 		this.sendToRoom = function(room, data, cbk) {
 			let me = this;
 			me.emitData({cmd: 'createRoom', room: room, data:data}, cbk);
@@ -20,6 +21,18 @@
 			me.q[data._id] = {obj: data, tm : new Date().getTime(), cbk : cbk};
 			me.socket.emit('clientRequest', me.q[data._id].obj);
 		}
+		this.audit = function() {
+			let me = this;
+			for (var o in me.q) {
+				if (new Date().getTime() -  me.q[o].tm > me.timeOut) {
+					console.log('Timeout ' + data._id + ':');
+					console.log(me.q[o]);
+					delete(me.q[o])
+				}
+			}
+			setTimeout(me.audit, 2000);	
+		}
+		
 		this.init = function(cfg) {
 			let me = this;
 			me.cfg = cfg;
@@ -40,7 +53,8 @@
 					}
 					delete me.q[incomeData._id];
 				});
-			});			
+			});
+			me.audit();
 		};
 		this.closeSocket = function() {
 			let me = this;
