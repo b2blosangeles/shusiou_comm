@@ -89,7 +89,11 @@
 			}
 		});
 		
-		qna1.sendToRoom('niu', 'data');
+		setTimeout(
+			function() {
+				qna1.sendToRoom('niu', 'data');
+			}, 1000
+		);
 		
 		qna.init({ 
 			link : 'https://comm1_dev.shusiou.win/',
