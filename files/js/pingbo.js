@@ -3,7 +3,8 @@
 
 		this.sendToRoom = function(room, data) {
 			let me = this;
-			
+			qna1.socket.emit('clientData', room);
+			/*
 			me.socket.join(room, function() {
 				io.to(data._room).emit('clientData', data);
 				io.in(room).clients((err, clients) => {
@@ -12,7 +13,7 @@
 					  '. Total ' + clients.length + ' clients :' + clients.join(',') });
 				});
 			});
-			
+			*/
 		}		
 		this.init = function(cfg) {
 			let me = this;
