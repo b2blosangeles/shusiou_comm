@@ -34,6 +34,7 @@
 					delete(me.q[o])
 				}
 			}
+			console.log('this.audit');
 			setTimeout(me.audit, 2000);	
 		}
 		
