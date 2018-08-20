@@ -92,10 +92,12 @@
 		setTimeout(
 			function() {
 				console.log(qna1.socket.id);
-				console.log('--- *** ---' );
+				console.log('--- *1** ---' );
 				qna1.sendToRoom('niu', {niu:1});
+				console.log('--- *0** ---' );
+				qna.sendToRoom('niu', {niu:1});
 				console.log(qna.socket.id);
-			}, 3000
+			}, 2000
 		);
 		
 		qna.init({ 
