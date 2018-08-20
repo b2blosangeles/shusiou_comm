@@ -23,7 +23,7 @@
 		this.init = function(cfg) {
 			let me = this;
 			me.cfg = cfg;
-			me.timeOut = ((me.cfg.timeOut) && (me.cfg.timeOut > 1999)) ? me.cfg.timeOut : 2000;
+			me.timeOut = (me.cfg.timeOut) ? me.cfg.timeOut : 6000;
 			
 			me.socket = io.connect(me.cfg.link);
 			me.socket.on('connect', function() {
