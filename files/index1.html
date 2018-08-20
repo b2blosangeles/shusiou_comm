@@ -54,15 +54,40 @@
 			// annyang.start({ autoRestart: true});
 			annyang.start();		
 		}
-		qna.init({ 
+		qna1.init({ 
+			master_socket_id: '{$socket}', 
 			link : 'https://comm1_dev.shusiou.win/', 
 			proxy: ['http://comm1_dev.shusiou.win/', 'https://comm1_dev.shusiou.win/'],
 			onConnect : function(socket) {
-				console.log('---socket.id-A-->');
+				console.log('---socket.id--A->');
 				console.log(socket.id);
+				qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
+				// setup_annyang(['good', 'nice']);
+				$('.fa-microphone').removeClass('status_off').addClass('status_on');
+				$('#income_info').html('ready');
+			}, 			
+			onClientData : function(incomeData, socket) {
+				
+				switch (incomeData.data.cmd) {
+					case 'voiceRecong' :	
+						document.getElementById('income_info').innerHTML = 
+							JSON.stringify(incomeData.data.voiceRecong);
+						setup_annyang(incomeData.data.voiceRecong);
+						break;
+					/*	
+					case 'stop' :
+						annyang.abort();
+						$('.fa-microphone').removeClass('status_on').addClass('status_off');
+						document.getElementById('income_info').innerHTML =  'stopped';
+						break	
+					*/
+					default:	
+				}
+			},
+			afterTimeout : function() {
+				window.close();
 			}
-		});
-			
+		});			
 		qna.init({ 
 			master_socket_id: '{$socket}', 
 			link : 'https://comm1_dev.shusiou.win/', 
