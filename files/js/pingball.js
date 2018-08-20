@@ -61,7 +61,7 @@
 					}
 					// delete me.q[incomeData._id];
 				});
-				me._ITV = setInterval(me.audit, 300);
+				me._ITV = setInterval(function() { me.audit() }, 300);
 			});
 			
 		};		
