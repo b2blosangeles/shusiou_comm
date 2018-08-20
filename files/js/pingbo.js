@@ -3,7 +3,7 @@
 
 		this.sendToRoom = function(room, data) {
 			let me = this;
-			qna1.socket.emit('createRoom', room);
+			me.socket.emit('createRoom', room);
 			/*
 			me.socket.join(room, function() {
 				io.to(data._room).emit('clientData', data);
