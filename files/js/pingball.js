@@ -34,7 +34,6 @@
 					delete(me.q[o])
 				}
 			}
-			console.log('---this.audit---');
 		}
 		this.init = function(cfg) {
 			let me = this;
