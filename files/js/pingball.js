@@ -29,7 +29,7 @@
 		this.audit = function(ta) {
 			for (var o in ta.q) {
 				if (new Date().getTime() -  ta.q[o].tm > ta.timeOut) {
-					console.log('Timeout ' + o + ':' + ta.q[o].toString());
+					console.log('Timeout ' + o + ':' + ta.q[o].obj.toString());
 					delete(ta.q[o]);
 				} 
 			}
