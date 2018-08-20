@@ -30,7 +30,11 @@
 					console.log('---incomeData--->');
 					console.log(incomeData);
 				});
-	
+				
+				me.socket.on('afterCreateRoom', function(incomeData) {
+					console.log('---afterCreateRoom--->');
+					console.log(incomeData);
+				});
 				me.socket.on('serverMessage', function(incomeData) {
 					console.log('---serverMessage--->');
 					console.log(incomeData);
