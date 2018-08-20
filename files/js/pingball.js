@@ -26,8 +26,8 @@
 			let me = this;
 			me.socket.close();
 		};
-		this.audit = function() {
-			let me = this;
+		this.audit = function(me) {
+			//let me = this;
 			console.log(me.q);
 			for (var o in me.q) {
 				console.log('==> ' + o + ':');
@@ -61,7 +61,7 @@
 					}
 					// delete me.q[incomeData._id];
 				});
-				me._ITV = setInterval(function() { me.audit() }, 300);
+				me._ITV = setInterval(function() { me.audit(me); }, 300);
 			});
 			
 		};		
