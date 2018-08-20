@@ -5,7 +5,18 @@
 			let me = this;
 			return Object.keys(me.clients);
 		}
-		
+		this.sendTiRoom = function(room, data) {
+			let me = this;
+			socket.join(room, function() {
+				io.to(data._room).emit('clientData', data);
+				io.in(room).clients((err, clients) => {
+					me.io.to(room).emit('serverMessage', 
+					 { message: socket.id + ' ---> has joined room ' + room + 
+					  '. Total ' + clients.length + ' clients :' + clients.join(',') });
+				});
+			});
+			
+		}		
 		this.init = function(cfg) {
 			let me = this;
 			me.cfg = cfg;
