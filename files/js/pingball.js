@@ -28,6 +28,7 @@
 		};
 		this.audit = function() {
 			let me = this;
+			console.log(me.q);
 			for (var o in me.q) {
 				console.log('==> ' + o + ':');
 				if (new Date().getTime() -  me.q[o].tm > me.timeOut) {
