@@ -1,15 +1,21 @@
 (function () { 
-	var obj =  function () {		
-		this.q = {};
-		this.sendToRoom = function(room, data) {
+	var obj =  function (_code) {		
+		this.q = {}, this._cnt = 0, this._id = ((_code) ? (_code + '_') : 'id_');
+		this.sendToRoom = function(room, data, cbk) {
 			let me = this;
-			me.socket.emit('clientRequest', { cmd: 'createRoom', room: room, data:data});
+			me.emitData({cmd: 'createRoom', room: room, data:data}, cbk);
 		}
-		this.sendToSocketId = function(socket_id, data) {
+		this.sendToSocketId = function(socket_id, data, cbk) {
 			let me = this;
-			me.socket.emit('clientRequest', { cmd: 'sendToSocket', socket_id: socket_id, data:data});
+			me.emitData({cmd: 'sendToSocket', socket_id: socket_id, data:data}, cbk);
 		}
-
+		this.emitData = function(data, cbk) {
+			let me = this;
+			me._cnt ++;
+			data._id = me._id + me._cnt;
+			me.q[data._id] = {obj: data, tm : new Date().getTime(), cbk : cbk};
+			me.socket.emit('clientRequest', me.q[data._id].obj);
+		}
 		this.init = function(cfg) {
 			let me = this;
 			console.log('----me.name--->');
@@ -28,18 +34,12 @@
 					console.log(incomeData);
 				});
 				
-				me.socket.on('afterCreateRoom', function(incomeData) {
-					console.log('---afterCreateRoom--->');
-					console.log(incomeData);
-				});
-				me.socket.on('serverMessage', function(incomeData) {
-					if (incomeData._id) {
-						delete me.q['id']
+				me.socket.on('clientRequestCBK', function(incomeData) {
+					if ((me.q[incomeData._id]) && typeof me.q[incomeData._id].cbk === 'function') {
+						me.q[incomeData._id].cbk(incomeData);
 					}
-					
-
-				});				
-				
+					delete me.q[incomeData._id];
+				});
 			});			
 		};
 		this.closeSocket = function() {
