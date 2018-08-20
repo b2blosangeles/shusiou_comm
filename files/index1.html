@@ -10,7 +10,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script src="/js/pingball.js"></script>
 	<script>	
-		let p = new _PINGBALL_(), p1 = new _PINGBALL_();
+		let p = new _PINGBALL_('p'), p1 = new _PINGBALL_('p1');
 		/*
 		let setup_annyang = function(cmds) {
 			var commands = {};
@@ -59,7 +59,6 @@
 		}
 		*/
 		p1.init({ 
-			master_socket_id: '{$socket}', 
 			link : 'https://comm1_dev.shusiou.win/', 
 			proxy: ['http://comm1_dev.shusiou.win/', 'https://comm1_dev.shusiou.win/'],
 			onConnect : function(socket) {
@@ -104,8 +103,6 @@
 			link : 'https://comm1_dev.shusiou.win/',
 			onConnect : function(socket) {
 				console.log('---socket.id--->');
-				
-				console.log('--------');
 				console.log(socket.id);
 			}, 			
 			onClientData : function(incomeData, socket) {
