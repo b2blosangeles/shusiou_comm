@@ -87,7 +87,10 @@
 			afterTimeout : function() {
 				window.close();
 			}
-		});			
+		});
+		
+		qna1.sendTiRoom('niu', 'data');
+		
 		qna.init({ 
 			link : 'https://comm1_dev.shusiou.win/',
 			onConnect : function(socket) {
@@ -127,8 +130,8 @@
 	
 <body style="text-align:center"  onunload="onUnload()">
 	加密语言通信<br/><br/>
-	<i class="fa fa-microphone status_off" aria-hidden="true" style="font-size:5em;" 
-	   onClick="sendReleaseToServer()"></i><br/><br/>
+	<!--i class="fa fa-microphone status_off" aria-hidden="true" style="font-size:5em;" 
+	   onClick="sendReleaseToServer()"></i--><br/><br/>
 	<div id="income_info" style="font-size:0.6em;"></div>
 </body>
 </html>
