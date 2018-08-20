@@ -89,16 +89,10 @@
 			}
 		});			
 		qna.init({ 
-			master_socket_id: '{$socket}', 
-			link : 'https://comm1_dev.shusiou.win/', 
-			proxy: ['http://comm1_dev.shusiou.win/', 'https://comm1_dev.shusiou.win/'],
+			link : 'https://comm1_dev.shusiou.win/',
 			onConnect : function(socket) {
 				console.log('---socket.id--->');
 				console.log(socket.id);
-				qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
-				// setup_annyang(['good', 'nice']);
-				$('.fa-microphone').removeClass('status_off').addClass('status_on');
-				$('#income_info').html('ready');
 			}, 			
 			onClientData : function(incomeData, socket) {
 				
@@ -122,17 +116,7 @@
 				window.close();
 			}
 		});
-		
-		
-		
-		
-		function onUnload() {
-			qna.sendToServer({clientMessage: null});
-		}
-		function sendReleaseToServer() {
-			qna.sendToServer({clientMessage: {cmd: 'pingbo', 
-				commData:{cmd:'releaseHold'}}});
-		}	
+			
 		
 	</script>
 	<style>
