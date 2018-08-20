@@ -1,7 +1,7 @@
 (function () { 
 	var obj =  function () {		
 
-		this.sendTiRoom = function(room, data) {
+		this.sendToRoom = function(room, data) {
 			let me = this;
 			socket.join(room, function() {
 				io.to(data._room).emit('clientData', data);
