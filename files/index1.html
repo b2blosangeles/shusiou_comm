@@ -8,9 +8,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script src="/js/pingbo.js"></script>
+	<script src="/js/pingball.js"></script>
 	<script>	
-		let qna = new _PINGBO_(), qna1 = new _PINGBO_();
+		let p = new _PINGBALL_(), p1 = new _PINGBALL_();
 		/*
 		let setup_annyang = function(cmds) {
 			var commands = {};
@@ -58,7 +58,7 @@
 			annyang.start();		
 		}
 		*/
-		qna1.init({ 
+		p1.init({ 
 			master_socket_id: '{$socket}', 
 			link : 'https://comm1_dev.shusiou.win/', 
 			proxy: ['http://comm1_dev.shusiou.win/', 'https://comm1_dev.shusiou.win/'],
@@ -91,16 +91,16 @@
 		
 		setTimeout(
 			function() {
-				console.log(qna1.socket.id);
+				console.log(p1.socket.id);
 				console.log('--- *1** ---' );
 				qna1.sendToRoom('niu', {niu:1});
 				console.log('--- *0** ---' );
 				qna.sendToRoom('niu', {niu:1});
-				console.log(qna.socket.id);
+				console.log(p.socket.id);
 			}, 2000
 		);
 		
-		qna.init({ 
+		p.init({ 
 			link : 'https://comm1_dev.shusiou.win/',
 			onConnect : function(socket) {
 				console.log('---socket.id--->');
