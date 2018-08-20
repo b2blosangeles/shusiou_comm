@@ -41,5 +41,5 @@
 			me.socket.close();
 		};		
 	};
-	window._QNA_ = obj;
+	window._PINGBO_ = obj;
 })();
