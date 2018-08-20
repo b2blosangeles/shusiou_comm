@@ -19,6 +19,7 @@
 			me._cnt ++;
 			data._id = me._id + me._cnt;
 			me.q[data._id] = {obj: data, tm : new Date().getTime(), cbk : cbk};
+			console.log(me.q);
 			me.socket.emit('clientRequest', me.q[data._id].obj);
 		}
 		this.closeSocket = function() {
