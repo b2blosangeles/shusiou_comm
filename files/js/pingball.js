@@ -34,10 +34,8 @@
 					delete(me.q[o])
 				}
 			}
-			console.log('this.audit');
-			setTimeout(me.audit, 2000);	
+			console.log('---this.audit---');
 		}
-		
 		this.init = function(cfg) {
 			let me = this;
 			me.cfg = cfg;
@@ -58,10 +56,10 @@
 					}
 					delete me.q[incomeData._id];
 				});
+				me._ITV = setInterval(me.audit, 2000);
 			});
 			
-		};
-		me.audit();		
+		};		
 	};
 	window._PINGBALL_ = obj;
 })();
