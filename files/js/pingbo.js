@@ -5,6 +5,10 @@
 			let me = this;
 			me.emitData({cmd: 'createRoom', room: room, data:data}, cbk);
 		}
+		this.leaveRoom = function(room, data, cbk) {
+			let me = this;
+			me.emitData({cmd: 'leaveRoom', room: room}, cbk);
+		}		
 		this.sendToSocketId = function(socket_id, data, cbk) {
 			let me = this;
 			me.emitData({cmd: 'sendToSocket', socket_id: socket_id, data:data}, cbk);
