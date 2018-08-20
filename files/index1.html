@@ -65,10 +65,6 @@
 			onConnect : function(socket) {
 				console.log('---socket.id--A->');
 				console.log(socket.id);
-				qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
-				// setup_annyang(['good', 'nice']);
-				$('.fa-microphone').removeClass('status_off').addClass('status_on');
-				$('#income_info').html('ready');
 			}, 			
 			onClientData : function(incomeData, socket) {
 				
