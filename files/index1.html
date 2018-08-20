@@ -67,9 +67,6 @@
 			onClientData : function(incomeData, socket) {
 				
 				switch (incomeData.data.cmd) {
-					case 'pingbo' :
-						qna.sendToServer({clientMessage: {cmd: 'pingbo', sender:socket.id}});
-						break;
 					case 'voiceRecong' :	
 						document.getElementById('income_info').innerHTML = 
 							JSON.stringify(incomeData.data.voiceRecong);
