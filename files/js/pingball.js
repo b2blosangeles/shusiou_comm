@@ -19,7 +19,6 @@
 			me._cnt ++;
 			data._id = me._id + me._cnt;
 			me.q[data._id] = {obj: data, tm : new Date().getTime(), cbk : cbk};
-			console.log(me.q);
 			me.socket.emit('clientRequest', me.q[data._id].obj);
 		}
 		this.closeSocket = function() {
@@ -29,7 +28,7 @@
 		this.audit = function(ta) {
 			for (var o in ta.q) {
 				if (new Date().getTime() -  ta.q[o].tm > ta.timeOut) {
-					console.log('Timeout ' + o + ':' + ta.q[o].obj.toString());
+					console.log('Timeout ' + o + ':'); console.log('ta.q[o].obj);
 					delete(ta.q[o]);
 				} 
 			}
@@ -37,7 +36,7 @@
 		this.init = function(cfg) {
 			let me = this;
 			me.cfg = cfg;
-			me.timeOut = (me.cfg.timeOut) ? me.cfg.timeOut : 6000;
+			me.timeOut = (me.cfg.timeOut) ? me.cfg.timeOut : 3000;
 			
 			me.socket = io.connect(me.cfg.link);
 			me.socket.on('connect', function() {
