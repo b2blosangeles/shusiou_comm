@@ -1,10 +1,6 @@
 (function () { 
 	var obj =  function () {		
 
-		this.getClients = function() {
-			let me = this;
-			return Object.keys(me.clients);
-		}
 		this.sendTiRoom = function(room, data) {
 			let me = this;
 			socket.join(room, function() {
