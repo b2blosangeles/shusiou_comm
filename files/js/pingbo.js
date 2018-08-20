@@ -1,46 +1,11 @@
 (function () { 
-	var obj =  function () {
-		this.sessionService = function(incomeData) {
-			let me = this;
-			if (incomeData.data._sender) {
-				me.clients[incomeData.data._sender] = new Date().getTime();
-			}
-			me.socket.emit('clientData', {_socket: incomeData.data._sender, _link: incomeData._link, 
-				_proxy: me.cfg.proxy, 
-				data: {
-				      ping_id : incomeData.data.ping_id, _code : '_ReSessionRequest',
-				      }});			
-		}		
-		this.incomeServer = function(incomeData) {
-			let me = this;
-			if (typeof me.cfg.onServerData === 'function') {
-				me.cfg.onServerData(incomeData, me.socket);
-			}
-			return true;			
-		}
-		this.sendToServer = function(data) {
-			let me = this;
-			data._sender = me.socket.id;
-			data._code = '_sendToServer';
-			me.socket.emit('clientData', {_socket: me.cfg.master_socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
-				data: data});		
-		}
-		this.sendToClient = function(data, socket_id) {
-			let me = this;
-			data._sender = me.socket.id;
-			me.socket.emit('clientData', {_socket: socket_id, _link: me.cfg.link, _proxy: me.cfg.proxy, 
-				data: data});		
-		}
+	var obj =  function () {		
+
 		this.getClients = function() {
 			let me = this;
 			return Object.keys(me.clients);
 		}
-		this.incomeClient = function(incomeData) {
-			let me = this;
-			if (typeof me.cfg.onClientData === 'function') {
-				me.cfg.onClientData(incomeData, me.socket);
-			}			
-		}		
+		
 		this.init = function(cfg) {
 			let me = this;
 			me.cfg = cfg;
