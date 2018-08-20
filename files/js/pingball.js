@@ -21,6 +21,10 @@
 			me.q[data._id] = {obj: data, tm : new Date().getTime(), cbk : cbk};
 			me.socket.emit('clientRequest', me.q[data._id].obj);
 		}
+		this.closeSocket = function() {
+			let me = this;
+			me.socket.close();
+		};
 		this.audit = function() {
 			let me = this;
 			for (var o in me.q) {
@@ -54,12 +58,9 @@
 					delete me.q[incomeData._id];
 				});
 			});
-			me.audit();
+			
 		};
-		this.closeSocket = function() {
-			let me = this;
-			me.socket.close();
-		};		
+		me.audit();		
 	};
 	window._PINGBALL_ = obj;
 })();
