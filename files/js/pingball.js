@@ -28,12 +28,11 @@
 		};
 		this.audit = function() {
 			let me = this;
-			console.log('=== me.q ===');
 			for (var o in me.q) {
 				if (new Date().getTime() -  me.q[o].tm > me.timeOut) {
 					console.log('Timeout ' + o + ':');
 					console.log(me.q[o]);
-					delete(me.q[o]);
+					// delete(me.q[o]);
 				} else {
 					console.log('==> ' + o + ':');
 					console.log(me.q[o]);			
