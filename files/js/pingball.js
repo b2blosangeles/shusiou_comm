@@ -54,7 +54,7 @@
 					if ((me.q[incomeData._id]) && typeof me.q[incomeData._id].cbk === 'function') {
 						me.q[incomeData._id].cbk(incomeData);
 					}
-					// delete me.q[incomeData._id];
+					delete me.q[incomeData._id];
 				});
 				me._ITV = setInterval(function() { me.audit(me); }, 300);
 			});
