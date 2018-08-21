@@ -48,6 +48,7 @@
 					cfg.onServerData(incomeData);
 				});
 				me.socket.on('clientRequestCBK', function(incomeData) {
+					console.log('clientRequestCBK');
 					if ((me.q[incomeData._id]) && typeof me.q[incomeData._id].cbk === 'function') {
 						me.q[incomeData._id].cbk(incomeData);
 					}
