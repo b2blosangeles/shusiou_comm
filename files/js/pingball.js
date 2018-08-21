@@ -12,7 +12,7 @@
 		}		
 		this.sendToSocketId = function(socket_id, data, cbk) {
 			let me = this;
-			me.emitData({cmd: 'sendToSocket', socket_id: socket_id, data:data}, cbk);
+			me.emitData({cmd: 'sendToSocket', toSocket: socket_id, data:data}, cbk);
 		}
 		this.emitData = function(data, cbk) {
 			let me = this;
