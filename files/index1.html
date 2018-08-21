@@ -92,17 +92,20 @@
 			function() {
 				console.log(p1.socket.id);
 				console.log('--- *1** ---' );
-				p1.sendToRoom('niu', {niu:1}, function() {
-					alert(123);
+				p1.sendToRoom('niu', {niu:1}, function(data) {
+					console.log('sendToRoom . ---> ');
+					console.log(data);
 				});
-				console.log('--- *0** ---' );
-				p.sendToRoom('niu', {niu:1}, function() {
-					alert(456);
+				console.log('--- *2** ---' );
+				p.sendToRoom('niu', {niu:2}, function() {
+					console.log('sendToRoom . ---> ');
+					console.log(data);
 				});
 				
-				console.log('--- *2** ---' );
+				console.log('--- *3** ---' );
 				p.leaveRoom('niu', function() {
-					alert('leaveRoom');
+					console.log('leaveRoom . ---> ');
+					console.log(data);					
 				});
 				console.log(p.socket.id);
 			}, 2000
