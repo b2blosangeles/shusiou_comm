@@ -85,7 +85,7 @@
 					console.log(data);
 				});
 				*/
-				p1.sendToRoom('niu', null, function(data) {
+				p1.sendToRoom('niu', {b:34}, function(data) {
 					console.log('sendToRoom . ---> ');
 					console.log(data);
 				});				
@@ -96,7 +96,7 @@
 					console.log(data);					
 				});
 				
-				for (var i = 0; i < 100; i++) {
+				for (var i = 0; i < 10; i++) {
 					p.sendToSocket('niu', {niu:'N -' + i}, function(data) {
 						console.log('sendToSocketId . ---> ');
 						console.log(data);
