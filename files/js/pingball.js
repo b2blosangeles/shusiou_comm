@@ -44,8 +44,8 @@
 					cfg.onConnect(me.socket);
 				}
 				me.socket.on('clientMessage', function(incomeData) {
-					if (typeof cfg.clientMessage === 'function') {
-						cfg.clientMessage(incomeData);
+					if (typeof cfg.onClientMessage === 'function') {
+						cfg.onClientMessage(incomeData);
 					}
 				});
 				me.socket.on('clientRequestCBK', function(incomeData) {
