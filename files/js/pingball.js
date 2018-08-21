@@ -4,7 +4,7 @@
 		
 		this.sendToRoom = function(room, data, cbk) {
 			let me = this;
-			me.emitData({cmd: 'createRoom', room: room, data:data}, cbk);
+			me.emitData({cmd: 'sendToRoom', room: room, data:data}, cbk);
 		}
 		this.leaveRoom = function(room, data, cbk) {
 			let me = this;
