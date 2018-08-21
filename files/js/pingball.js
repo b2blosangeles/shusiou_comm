@@ -6,7 +6,7 @@
 			let me = this;
 			me.emitData({cmd: 'sendToRoom', room: room, data:data}, cbk);
 		}
-		this.leaveRoom = function(room, data, cbk) {
+		this.leaveRoom = function(room, cbk) {
 			let me = this;
 			me.emitData({cmd: 'leaveRoom', room: room}, cbk);
 		}		
