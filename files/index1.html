@@ -77,18 +77,18 @@
 		
 		setTimeout(
 			function() {
+				/*
 				console.log(p1.socket.id);
 				console.log('--- *1** ---' );
-				p1.sendToRoom('niu', {niu:1}, function(data) {
+				p1.sendToRoom('niu', null, function(data) {
 					console.log('sendToRoom . ---> ');
 					console.log(data);
 				});
-				console.log('--- *2** ---' );
-				p.sendToRoom('niu', {niu:2}, function(data) {
+				*/
+				p1.sendToRoom('niu', null, function(data) {
 					console.log('sendToRoom . ---> ');
 					console.log(data);
-				});
-				
+				});				
 				console.log('--- *3** ---' );
 				p.leaveRoom('niu', function(data) {
 					console.log('leaveRoom . ---> ');
@@ -96,7 +96,7 @@
 				});
 				
 				for (var i = 0; i < 10000; i++) {
-					p.sendToSocket(p1.socket.id, {niu:'D -' + i}, function(data) {
+					p.sendToSocket('niu', {niu:'N -' + i}, function(data) {
 						console.log('sendToSocketId . ---> ');
 						console.log(data);
 					});
