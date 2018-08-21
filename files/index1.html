@@ -109,7 +109,7 @@
 				});
 				
 				for (var i = 0; i < 10000; i++) {
-					p.sendToSocket(p2.socket.id, {niu:'D -' + i}, function(data) {
+					p.sendToSocket(p1.socket.id, {niu:'D -' + i}, function(data) {
 						console.log('sendToSocketId . ---> ');
 						console.log(data);
 					});
