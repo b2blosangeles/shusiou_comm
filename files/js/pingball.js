@@ -10,7 +10,7 @@
 			let me = this;
 			me.emitData({cmd: 'leaveRoom', room: room}, cbk);
 		}		
-		this.sendToSocketId = function(socket_id, data, cbk) {
+		this.sendToSocket = function(socket_id, data, cbk) {
 			let me = this;
 			me.emitData({cmd: 'sendToSocket', toSocket: socket_id, data:data}, cbk);
 		}
