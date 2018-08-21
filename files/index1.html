@@ -107,7 +107,10 @@
 					console.log('leaveRoom . ---> ');
 					console.log(data);					
 				});
-				console.log(p.socket.id);
+				p1.sendToRoom('niu', {niu:3}, function(data) {
+					console.log('sendToRoom . ---> ');
+					console.log(data);
+				});
 			}, 2000
 		);
 		
