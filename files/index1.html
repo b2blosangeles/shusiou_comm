@@ -90,14 +90,14 @@
 					console.log(data);
 				});				
 				console.log('--- *3** ---' );
-				
+				/*
 				p.leaveRoom('niu', function(data) {
 					console.log('leaveRoom . ---> ');
 					console.log(data);					
 				});
-				
+				*/
 				for (var i = 0; i < 6; i++) {
-					p.sendToSocket('niu', {niu:'N -' + i}, function(data) {
+					p.sendToRoom('niu', {niu:'N -' + i}, function(data) {
 						console.log('sendToSocketId . ---> ');
 						console.log(data);
 					});
