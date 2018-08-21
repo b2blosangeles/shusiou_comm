@@ -65,26 +65,12 @@
 				console.log('---socket.id--A->');
 				console.log(socket.id);
 			}, 			
-			onClientData : function(incomeData, socket) {
-				
-				switch (incomeData.data.cmd) {
-					case 'voiceRecong' :	
-						document.getElementById('income_info').innerHTML = 
-							JSON.stringify(incomeData.data.voiceRecong);
-						setup_annyang(incomeData.data.voiceRecong);
-						break;
-					/*	
-					case 'stop' :
-						annyang.abort();
-						$('.fa-microphone').removeClass('status_on').addClass('status_off');
-						document.getElementById('income_info').innerHTML =  'stopped';
-						break	
-					*/
-					default:	
-				}
+			onClientMessage : function(incomeData) {
+				console.log('---socket.id--->');
+				console.log(incomeData);
 			},
 			afterTimeout : function() {
-				window.close();
+				
 			}
 		});
 		
@@ -123,7 +109,12 @@
 			onConnect : function(socket) {
 				console.log('---socket.id--->');
 				console.log(socket.id);
-			}, 			
+			}, 
+			onClientMessage : function(incomeData) {
+				console.log('---socket.id--->');
+				console.log(incomeData);
+			},
+			/*
 			onClientData : function(incomeData, socket) {
 				
 				switch (incomeData.data.cmd) {
@@ -141,9 +132,9 @@
 					*/
 					default:	
 				}
-			},
+			},*/
 			afterTimeout : function() {
-				window.close();
+				
 			}
 		});
 			
