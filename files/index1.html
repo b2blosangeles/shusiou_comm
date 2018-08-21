@@ -69,8 +69,9 @@
 				console.log('---socket.id--->');
 				console.log(incomeData);
 			},
-			afterTimeout : function() {
-				
+			afterTimeout : function(data) {
+				console.log('===afterTimeout====');
+				console.log(data);
 			}
 		});
 		
@@ -133,8 +134,9 @@
 					default:	
 				}
 			},*/
-			afterTimeout : function() {
-				
+			afterTimeout : function(data) {
+				console.log('===afterTimeout====');
+				console.log(data);
 			}
 		});
 			
