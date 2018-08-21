@@ -92,9 +92,13 @@
 			function() {
 				console.log(p1.socket.id);
 				console.log('--- *1** ---' );
-				p1.sendToRoom('niu', {niu:1});
+				p1.sendToRoom('niu', {niu:1}, function() {
+					alert(123);
+				});
 				console.log('--- *0** ---' );
-				p.sendToRoom('niu', {niu:1});
+				p.sendToRoom('niu', {niu:1}, function() {
+					alert(456);
+				}));
 				console.log(p.socket.id);
 			}, 2000
 		);
@@ -138,8 +142,8 @@
 	
 <body style="text-align:center"  onunload="onUnload()">
 	<br/><br/>
-	<!--i class="fa fa-microphone status_off" aria-hidden="true" style="font-size:5em;" 
-	   onClick="sendReleaseToServer()"></i--><br/><br/>
+	<i class="fa fa-microphone status_off" aria-hidden="true" style="font-size:5em;" 
+	   onClick="sendReleaseToServer()"></i><br/><br/>
 	<div id="income_info" style="font-size:0.6em;"></div>
 </body>
 </html>
