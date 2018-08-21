@@ -108,13 +108,13 @@
 					console.log(data);					
 				});
 				for (var i = 0; i < 1000; i++) {
-					p1.sendToSocket('/#' + p1.socket.id, {niu:'A -' + i}, function(data) {
+					p1.sendToSocketId('/#' + p1.socket.id, {niu:'A -' + i}, function(data) {
 						console.log('sendToRoom . ---> ');
 						console.log(data);
 					});
 				}
 				for (var i = 0; i < 1000; i++) {
-					p1.sendToSocket('/#' + p2.socket.id, {niu:'C -' + i}, function(data) {
+					p1.sendToSocketId('/#' + p2.socket.id, {niu:'C -' + i}, function(data) {
 						console.log('sendToRoom . ---> ');
 						console.log(data);
 					});
