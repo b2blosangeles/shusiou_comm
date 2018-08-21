@@ -62,11 +62,11 @@
 			link : 'https://comm1_dev.shusiou.win/', 
 			proxy: ['http://comm1_dev.shusiou.win/', 'https://comm1_dev.shusiou.win/'],
 			onConnect : function(socket) {
-				console.log('---socket.id--A->');
+				console.log('---socket.id--->');
 				console.log(socket.id);
 			}, 			
 			onClientMessage : function(incomeData) {
-				console.log('---socket.id--->');
+				console.log('---income message--->');
 				console.log(incomeData);
 			},
 			afterTimeout : function(data) {
@@ -96,7 +96,7 @@
 					console.log(data);					
 				});
 				
-				for (var i = 0; i < 10; i++) {
+				for (var i = 0; i < 6; i++) {
 					p.sendToSocket('niu', {niu:'N -' + i}, function(data) {
 						console.log('sendToSocketId . ---> ');
 						console.log(data);
