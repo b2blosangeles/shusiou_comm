@@ -10,7 +10,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script src="/js/pingball.js"></script>
 	<script>	
-		let p = new _PINGBALL_('p'), p1 = new _PINGBALL_('p1');
+		let p = new _PINGBALL_('p');
 		/*
 		let setup_annyang = function(cmds) {
 			var commands = {};
@@ -58,61 +58,31 @@
 			annyang.start();		
 		}
 		*/
-		p1.init({ 
-			link : 'https://comm1_dev.shusiou.win/', 
-			proxy: ['http://comm1_dev.shusiou.win/', 'https://comm1_dev.shusiou.win/'],
-			onConnect : function(socket) {
-				console.log('---socket.id--->');
-				console.log(socket.id);
-			}, 			
-			onClientMessage : function(incomeData) {
-				console.log('---onClientMessage 1--->');
-				console.log(incomeData);
-			},
-			afterTimeout : function(data) {
-				console.log('===afterTimeout====');
-				console.log(data);
-			}
-		});
 		
-		setTimeout(
-			function() {
-				/*
-				console.log(p1.socket.id);
-				console.log('--- *1** ---' );
-				*/
-				p1.sendToRoom('niu', null, function(data) {
-					console.log('sendToRoom . ---> ');
-					console.log(data);
+		function afterConnection() {
+			p.sendToRoom('niu', null, function(data) {});
+			/*
+			console.log('--- *3** ---' );
+
+			p.leaveRoom('niu', function(data) {
+				console.log('leaveRoom . ---> ');
+				console.log(data);					
+			});
+			*/
+			for (var i = 0; i < 6; i++) {
+				p.sendToRoom('niu', {niu:'N -' + i}, function(data) {
+				//	console.log('sendToSocketId . ---> ');
+				//	console.log(data);
 				});
-				
-				p.sendToRoom('niu', {b:34}, function(data) {
-					//console.log('sendToRoom . ---> ');
-					//console.log(data);
-				});
-				/*
-				console.log('--- *3** ---' );
-				
-				p.leaveRoom('niu', function(data) {
-					console.log('leaveRoom . ---> ');
-					console.log(data);					
-				});
-				*/
-				for (var i = 0; i < 6; i++) {
-					p.sendToRoom('niu', {niu:'N -' + i}, function(data) {
-					//	console.log('sendToSocketId . ---> ');
-					//	console.log(data);
-					});
-				}
-				
-			}, 2000
-		);
+			}
+		};
 		
 		p.init({ 
 			link : 'https://comm1_dev.shusiou.win/',
 			onConnect : function(socket) {
-				console.log('---socket.id--->');
+				console.log('---socket.id--A->');
 				console.log(socket.id);
+				afterConnection();
 			}, 
 			onClientMessage : function(incomeData) {
 				console.log('---onClientMessage--->');
