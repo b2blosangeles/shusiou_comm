@@ -17,9 +17,7 @@
 			for (var i=0; i < cmds.length; i++) {
 				let cmd = cmds[i];
 				commands[cmd] = function() {
-					document.getElementById('income_info').innerHTML =  cmd;
-					qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:{
-						cmd:cmd, tm:new Date().getTime()}}});
+					alert(cmd);
 				};
 			}
 			annyang.addCallback('end', function() {
@@ -40,8 +38,7 @@
 						console.log('--annyang.isListening()-AA->');
 						console.log(annyang.isListening());
 				
-				qna.sendToServer({clientMessage: {cmd: 'pingbo', commData:{err:err, 
-					tm:new Date().getTime()}}});
+				alert(111);
 					
 			});
 
