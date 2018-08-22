@@ -26,7 +26,7 @@
 			});
 			annyang.addCallback('error', function(err) {
 				console.log(err);
-				
+				return true;
 				annyang.abort(function() {});
 				setTimeout(
 					function() {
