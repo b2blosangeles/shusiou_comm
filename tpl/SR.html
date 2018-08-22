@@ -11,7 +11,7 @@
 	<script src="/js/pingball.js"></script>
 	<script>	
 		let p = new _PINGBALL_('p');
-		/*
+		
 		let setup_annyang = function(cmds) {
 			var commands = {};
 			for (var i=0; i < cmds.length; i++) {
@@ -57,9 +57,10 @@
 			// annyang.start({ autoRestart: true});
 			annyang.start();		
 		}
-		*/
+		
 		
 		function afterConnection() {
+			setup_annyang(['good', 'nice']);
 			p.sendToRoom('niu', null, function(data) {});
 			/*
 			console.log('--- *3** ---' );
